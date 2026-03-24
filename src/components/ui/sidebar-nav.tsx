@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Grid, OverflowMenuVertical } from "@carbon/icons-react";
+import { SidePanelClose, OverflowMenuVertical } from "@carbon/icons-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -54,10 +54,10 @@ const NavLink = ({ item }: { item: NavItem }) => (
       "flex items-center gap-[var(--padding-md)] p-[var(--padding-md)]",
       "font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)]",
       "text-[length:var(--size-button)] leading-[var(--line-height-buttons)] tracking-[var(--letter-spacing-spacious)] uppercase whitespace-nowrap",
-      "rounded-[var(--radius-md)] transition-colors",
+      "rounded-[var(--radius-md)] transition-[color,background-color] duration-300",
       "hover:bg-[var(--input-hover-dark)]",
       item.active
-        ? "text-[color:var(--content-primary)]"
+        ? "bg-[var(--input-hover-dark)] text-[color:var(--content-primary)] font-[var(--weight-medium)]"
         : "text-[color:var(--content-primary)]"
     )}
   >
@@ -77,7 +77,7 @@ const NavSubLink = ({ item }: { item: NavItem }) => (
       "flex items-center p-[var(--padding-md)] rounded-[var(--radius-md)]",
       "font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)]",
       "text-[length:var(--size-button)] leading-[var(--line-height-buttons)] tracking-[var(--letter-spacing-spacious)] uppercase whitespace-nowrap",
-      "transition-colors hover:bg-[var(--input-hover-dark)]",
+      "transition-[color,background-color] duration-300 hover:bg-[var(--input-hover-dark)]",
       item.active
         ? "text-[color:var(--content-primary)]"
         : "text-[color:var(--content-secondary)]"
@@ -142,14 +142,14 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarNavProps>(
       >
         {/* Logo + toggle */}
         <div className="flex items-center gap-[var(--padding-xl)] px-[var(--padding-2xl)] py-[var(--padding-xl)]">
-          {logo && <div className="shrink-0 size-6">{logo}</div>}
+          {logo && <div className="shrink-0 h-6 flex items-center">{logo}</div>}
           {onToggle && (
             <button
               onClick={onToggle}
-              className="shrink-0 size-4 text-[color:var(--content-primary)] cursor-pointer"
+              className="shrink-0 size-4 text-[color:var(--content-primary)] cursor-pointer transition-[color,background-color] duration-300"
               aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
             >
-              {isCollapsed ? <Grid size={16} /> : <Grid size={16} />}
+              {isCollapsed ? <SidePanelClose size={16} /> : <SidePanelClose size={16} />}
             </button>
           )}
         </div>
@@ -187,7 +187,7 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarNavProps>(
             {onUserMenuClick && (
               <button
                 onClick={onUserMenuClick}
-                className="shrink-0 text-[color:var(--content-primary)] cursor-pointer"
+                className="shrink-0 text-[color:var(--content-primary)] cursor-pointer transition-[color,background-color] duration-300"
                 aria-label="User menu"
               >
                 <OverflowMenuVertical size={16} />

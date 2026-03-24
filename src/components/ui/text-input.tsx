@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
+import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { CheckmarkFilled, ErrorFilled, WarningAltFilled } from "@carbon/icons-react";
 
@@ -16,7 +17,7 @@ const inputSizeVariants = cva(
     "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
     "text-[color:var(--content-primary)]",
     "placeholder:text-[color:var(--content-secondary)]",
-    "outline-none transition-colors",
+    "outline-none transition-[color,background-color,border-color] duration-300",
     "disabled:text-[color:var(--content-disabled)] disabled:placeholder:text-[color:var(--content-disabled)] disabled:cursor-not-allowed",
   ],
   {
@@ -47,10 +48,10 @@ interface TextInputProps
 }
 
 const borderStateClasses = {
-  default: "border border-[var(--border-subtle)] hover:border-[var(--border-medium)] focus-within:border-[var(--border-strong)] focus-within:ring-1 focus-within:ring-inset focus-within:ring-[var(--border-strong)]",
-  success: "border border-[var(--border-success)] ring-1 ring-inset ring-[var(--border-success)]",
-  error: "border border-[var(--border-attention)] ring-1 ring-inset ring-[var(--border-attention)]",
-  warning: "border border-[var(--border-attention)] ring-1 ring-inset ring-[var(--border-attention)]",
+  default: "border border-[var(--border-subtle)] hover:border-[var(--border-medium)] focus-within:border-[var(--border-strong)]",
+  success: "border border-[var(--border-success)]",
+  error: "border border-[var(--border-attention)]",
+  warning: "border border-[var(--border-attention)]",
   disabled: "border border-[var(--border-subtle)]",
 };
 
@@ -86,6 +87,12 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
     const validationText = errorText || successText || warningText;
     const showHelper = !!(helperText || validationText);
 
+    // Shake on error
+    const [isShaking, setIsShaking] = React.useState(false);
+    React.useEffect(() => {
+      if (errorText) setIsShaking(true);
+    }, [errorText]);
+
     return (
       <div className={cn("flex flex-col items-start min-w-16 w-full", className)}>
         {/* Label */}
@@ -107,8 +114,11 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         <div
           className={cn(
             "relative flex items-center w-full rounded-[var(--radius-sm)]",
-            borderStateClasses[state]
+            "transition-[border-color,box-shadow] duration-300",
+            borderStateClasses[state],
+            isShaking && "animate-shake"
           )}
+          onAnimationEnd={() => setIsShaking(false)}
         >
           <input
             ref={ref}
@@ -127,41 +137,54 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
         </div>
 
         {/* Helper / validation text */}
-        {showHelper && (
-          <div id={helperId} className="pt-[var(--padding-md)] w-full" role={state === "error" ? "alert" : undefined}>
-            <div
-              className={cn(
-                "flex items-center px-[var(--padding-md)] py-[var(--padding-sm)] rounded-[var(--radius-sm)] w-full",
-                state === "error" && "bg-[var(--background-attention-light)]",
-                state === "success" && "bg-[var(--background-success-light)]",
-                state === "warning" && "bg-[var(--background-warning)]",
-                state === "default" && "bg-[var(--background-secondary)]",
-                state === "disabled" && "bg-[var(--background-secondary)]"
-              )}
+        <AnimatePresence initial={false}>
+          {showHelper && (
+            <motion.div
+              key="helper"
+              id={helperId}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden w-full"
+              role={state === "error" ? "alert" : undefined}
             >
-              {state === "success" && (
-                <span className="pr-[var(--padding-sm)]"><CheckmarkFilled size={13} className="shrink-0 fill-[var(--content-success)]" /></span>
-              )}
-              {state === "error" && (
-                <span className="pr-[var(--padding-sm)]"><ErrorFilled size={13} className="shrink-0 fill-[var(--content-attention)]" /></span>
-              )}
-              {state === "warning" && (
-                <span className="pr-[var(--padding-sm)]"><WarningAltFilled size={13} className="shrink-0 fill-[var(--content-warning-icons)]" /></span>
-              )}
-              <p
-                className={cn(
-                  "flex-1 font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[var(--line-height-tiny-text)]",
-                  state === "error" && "text-[color:var(--content-attention)]",
-                  state === "success" && "text-[color:var(--content-success)]",
-                  state === "warning" && "text-[color:var(--content-warning-text)]",
-                  (state === "default" || state === "disabled") && "text-[color:var(--content-secondary)]"
-                )}
-              >
-                {validationText || helperText}
-              </p>
-            </div>
-          </div>
-        )}
+              <div className="pt-[var(--padding-md)]">
+                <div
+                  className={cn(
+                    "flex items-center px-[var(--padding-md)] py-[var(--padding-sm)] rounded-[var(--radius-sm)] w-full",
+                    state === "error" && "bg-[var(--background-attention-light)]",
+                    state === "success" && "bg-[var(--background-success-light)]",
+                    state === "warning" && "bg-[var(--background-warning)]",
+                    state === "default" && "bg-[var(--background-secondary)]",
+                    state === "disabled" && "bg-[var(--background-secondary)]"
+                  )}
+                >
+                  {state === "success" && (
+                    <span className="pr-[var(--padding-sm)]"><CheckmarkFilled size={13} className="shrink-0 fill-[var(--content-success)]" /></span>
+                  )}
+                  {state === "error" && (
+                    <span className="pr-[var(--padding-sm)]"><ErrorFilled size={13} className="shrink-0 fill-[var(--content-attention)]" /></span>
+                  )}
+                  {state === "warning" && (
+                    <span className="pr-[var(--padding-sm)]"><WarningAltFilled size={13} className="shrink-0 fill-[var(--content-warning-icons)]" /></span>
+                  )}
+                  <p
+                    className={cn(
+                      "flex-1 font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[var(--line-height-tiny-text)]",
+                      state === "error" && "text-[color:var(--content-attention)]",
+                      state === "success" && "text-[color:var(--content-success)]",
+                      state === "warning" && "text-[color:var(--content-warning-text)]",
+                      (state === "default" || state === "disabled") && "text-[color:var(--content-secondary)]"
+                    )}
+                  >
+                    {validationText || helperText}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     );
   }

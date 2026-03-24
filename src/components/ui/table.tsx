@@ -88,7 +88,7 @@ const TableRow = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
     <div
       ref={ref}
       role="row"
-      className={cn("flex w-full hover:bg-[var(--input-hover-dark)] transition-colors", className)}
+      className={cn("flex w-full relative divider-gradient hover:bg-[var(--input-hover-dark)] transition-[background-color] duration-300", className)}
       {...props}
     >
       {children}
@@ -113,7 +113,7 @@ const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>(
       role="cell"
       className={cn(
         "flex items-center gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
+        "bg-[var(--background-primary)]",
         "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
         "text-[length:var(--size-small)] leading-[var(--line-height-small-text)]",
         "text-[color:var(--content-primary)]",
@@ -156,7 +156,7 @@ const TableCellAction = React.forwardRef<HTMLDivElement, TableCellActionProps>(
       role="cell"
       className={cn(
         "flex items-center justify-end gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
+        "bg-[var(--background-primary)]",
         className
       )}
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
@@ -173,7 +173,7 @@ const TableCellAction = React.forwardRef<HTMLDivElement, TableCellActionProps>(
               "font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)]",
               "text-[length:var(--size-button)] leading-[var(--line-height-buttons)] tracking-[var(--letter-spacing-spacious)]",
               "uppercase text-[color:var(--content-primary)]",
-              "cursor-pointer hover:bg-[var(--input-hover-dark)] transition-colors"
+              "cursor-pointer hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             )}
           >
             {action.label}
@@ -199,7 +199,7 @@ const TableCellIcon = React.forwardRef<HTMLDivElement, TableCellIconProps>(
       role="cell"
       className={cn(
         "flex items-center justify-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
+        "bg-[var(--background-primary)]",
         "text-[color:var(--content-primary)]",
         className
       )}
@@ -237,7 +237,7 @@ const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
       role="cell"
       className={cn(
         "flex items-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
+        "bg-[var(--background-primary)]",
         align === "center" && "justify-center",
         align === "right" && "justify-end",
         className
@@ -298,7 +298,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
           <button
             onClick={() => onPageChange?.(page - 1)}
             disabled={page <= 1}
-            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
+            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             aria-label="Previous page"
           >
             <ChevronLeft size={16} />
@@ -306,7 +306,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
           <button
             onClick={() => onPageChange?.(page + 1)}
             disabled={page >= totalPages}
-            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
+            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             aria-label="Next page"
           >
             <ChevronRight size={16} />

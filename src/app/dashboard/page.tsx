@@ -17,7 +17,7 @@ import {
   TablePagination,
 } from "@/components/ui/table";
 import { IconAdd } from "@/components/icons";
-import { Search, UserMultiple, CheckmarkOutline, Time, ChevronDown, Draggable, OverflowMenuVertical, Close, Filter, Dashboard as DashboardIcon, Settings, Send, Star } from "@carbon/icons-react";
+import { Search, UserMultiple, Checkmark, CheckmarkOutline, Time, ChevronDown, Draggable, OverflowMenuVertical, Close, Filter, Dashboard as DashboardIcon, Settings, Send } from "@carbon/icons-react";
 
 /* ---- Nav items ---- */
 
@@ -43,7 +43,7 @@ function StatCard({
   return (
     <div className="flex flex-col gap-[var(--padding-lg)] p-[var(--padding-xl)] border border-[var(--border-subtle)] rounded-[var(--radius-sm)] w-[180px]">
       <div className="flex items-center justify-between">
-        <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
+        <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-button)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
           {title}
         </span>
         <Draggable size={16} />
@@ -69,7 +69,11 @@ const users = [
 
 /* ---- Logo ---- */
 
-const Logo = () => <Star size={24} />;
+const Logo = () => (
+  <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-button)] tracking-[var(--letter-spacing-spacious)] uppercase text-[color:var(--content-primary)] whitespace-nowrap">
+    ACMEBANK
+  </span>
+);
 
 /* ---- Page ---- */
 
@@ -97,9 +101,8 @@ export default function DashboardPage() {
         variant="classic"
         items={navItems}
         logo={<Logo />}
-        userName="Hi, Alex"
+        showFooter={false}
         onToggle={() => {}}
-        onUserMenuClick={() => {}}
         className="bg-[var(--background-primary)] shrink-0"
       />
 
@@ -136,23 +139,22 @@ export default function DashboardPage() {
           {/* Stat cards */}
           <div className="flex gap-[var(--padding-2xl)] mb-[var(--padding-2xl)]">
             <StatCard title="Total Users" value={44} icon={<UserMultiple size={16} />} />
-            <StatCard title="Verified Users" value={44} icon={<CheckmarkOutline size={16} />} />
+            <StatCard title="Verified Users" value={44} icon={<Checkmark size={16} />} />
             <StatCard title="Unverified Users" value={44} icon={<Time size={16} />} />
           </div>
 
           {/* Filter row 1 */}
-          <div className="flex gap-[var(--padding-xl)] mb-[var(--padding-xl)]">
-            <TextInput label="First Name" placeholder="Filter by email" size="sm" className="flex-1" value={filters.firstName} onChange={updateFilter("firstName")} />
-            <TextInput label="Last Name" placeholder="Filter by phone" size="sm" className="flex-1" value={filters.lastName} onChange={updateFilter("lastName")} />
-            <TextInput label="Email" placeholder="Filter by username" size="sm" className="flex-1" value={filters.email} onChange={updateFilter("email")} />
+          <div className="grid grid-cols-3 gap-[var(--padding-xl)] mb-[var(--padding-xl)]">
+            <TextInput label="First Name" placeholder="Filter by email" size="sm" value={filters.firstName} onChange={updateFilter("firstName")} />
+            <TextInput label="Last Name" placeholder="Filter by phone" size="sm" value={filters.lastName} onChange={updateFilter("lastName")} />
+            <TextInput label="Email" placeholder="Filter by username" size="sm" value={filters.email} onChange={updateFilter("email")} />
           </div>
 
           {/* Filter row 2 */}
-          <div className="flex items-end gap-[var(--padding-xl)] mb-[var(--padding-2xl)]">
-            <TextInput label="From Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" value={filters.fromDate} onChange={updateFilter("fromDate")} />
-            <TextInput label="To Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" value={filters.toDate} onChange={updateFilter("toDate")} />
-            <div className="flex-1" />
-            <div className="flex items-center gap-[var(--padding-md)] pb-[var(--padding-md)]">
+          <div className="grid grid-cols-3 items-end gap-[var(--padding-xl)] mb-[var(--padding-2xl)]">
+            <TextInput label="From Date" placeholder="MM-DD-YYYY" size="sm" value={filters.fromDate} onChange={updateFilter("fromDate")} />
+            <TextInput label="To Date" placeholder="MM-DD-YYYY" size="sm" value={filters.toDate} onChange={updateFilter("toDate")} />
+            <div className="flex items-center justify-end gap-[var(--padding-md)] pb-[var(--padding-md)]">
               <Button variant="secondary" size="sm" buttonType="text-icon" disabled={!hasFilters} onClick={clearFilters} icon={
                 <Close size={16} />
               }>

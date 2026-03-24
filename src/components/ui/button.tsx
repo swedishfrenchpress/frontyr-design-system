@@ -18,6 +18,7 @@ const buttonVariants = cva(
     "leading-none",
     "uppercase",
     "cursor-pointer select-none whitespace-nowrap",
+    "transition-[color,background-color,box-shadow,opacity] duration-300",
     "disabled:cursor-not-allowed",
     "focus-visible:outline-none",
     "group",
