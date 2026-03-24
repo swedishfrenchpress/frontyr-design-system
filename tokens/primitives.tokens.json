@@ -1,0 +1,218 @@
+{
+  "FRONTYR": {
+    "Frontyr 100": { "$value": "#e8edf2", "$type": "color" },
+    "Frontyr 200": { "$value": "#c4d1de", "$type": "color" },
+    "Frontyr 300": { "$value": "#8a9db3", "$type": "color" },
+    "Frontyr 400": { "$value": "#506a85", "$type": "color" },
+    "Frontyr 500": { "$value": "#2b4562", "$type": "color" },
+    "Frontyr 600": { "$value": "#152f49", "$type": "color" },
+    "Frontyr 700": { "$value": "#0a2038", "$type": "color" },
+    "Frontyr 800": { "$value": "#051629", "$type": "color" }
+  },
+  "PINK": {
+    "Pink 100": { "$value": "#fef6fa", "$type": "color" },
+    "Pink 200": { "$value": "#fcdcec", "$type": "color" },
+    "Pink 300": { "$value": "#f79cc8", "$type": "color" },
+    "Pink 400": { "$value": "#f155a0", "$type": "color" },
+    "Pink 500": { "$value": "#de458e", "$type": "color" },
+    "Pink 600": { "$value": "#a51359", "$type": "color" },
+    "Pink 700": { "$value": "#4b112d", "$type": "color" },
+    "Pink 800": { "$value": "#360606", "$type": "color" }
+  },
+  "RED": {
+    "Red 100": { "$value": "#fff5f5", "$type": "color" },
+    "Red 200": { "$value": "#ffdede", "$type": "color" },
+    "Red 300": { "$value": "#ffa0a0", "$type": "color" },
+    "Red 400": { "$value": "#ff5c5c", "$type": "color" },
+    "Red 500": { "$value": "#f02d2d", "$type": "color" },
+    "Red 600": { "$value": "#d50b0b", "$type": "color" },
+    "Red 700": { "$value": "#570303", "$type": "color" },
+    "Red 800": { "$value": "#2a0303", "$type": "color" }
+  },
+  "ORANGE": {
+    "Orange 100": { "$value": "#fff9f5", "$type": "color" },
+    "Orange 200": { "$value": "#ffead3", "$type": "color" },
+    "Orange 300": { "$value": "#ffc382", "$type": "color" },
+    "Orange 400": { "$value": "#ff8806", "$type": "color" },
+    "Orange 500": { "$value": "#ec7303", "$type": "color" },
+    "Orange 600": { "$value": "#c15100", "$type": "color" },
+    "Orange 700": { "$value": "#562501", "$type": "color" },
+    "Orange 800": { "$value": "#2f1604", "$type": "color" }
+  },
+  "YELLOW": {
+    "Yellow 100": { "$value": "#fffcf5", "$type": "color" },
+    "Yellow 200": { "$value": "#fff8d5", "$type": "color" },
+    "Yellow 300": { "$value": "#ffe58a", "$type": "color" },
+    "Yellow 400": { "$value": "#ffbd14", "$type": "color" },
+    "Yellow 500": { "$value": "#eebb04", "$type": "color" },
+    "Yellow 600": { "$value": "#855f00", "$type": "color" },
+    "Yellow 700": { "$value": "#553b06", "$type": "color" },
+    "Yellow 800": { "$value": "#312102", "$type": "color" }
+  },
+  "BLUE": {
+    "Blue 100": { "$value": "#f5f9ff", "$type": "color" },
+    "Blue 200": { "$value": "#d4e5fe", "$type": "color" },
+    "Blue 300": { "$value": "#84b4fb", "$type": "color" },
+    "Blue 400": { "$value": "#4d93fc", "$type": "color" },
+    "Blue 500": { "$value": "#0968f6", "$type": "color" },
+    "Blue 600": { "$value": "#0049b8", "$type": "color" },
+    "Blue 700": { "$value": "#002a69", "$type": "color" },
+    "Blue 800": { "$value": "#19133a", "$type": "color" }
+  },
+  "TEAL": {
+    "Teal 100": { "$value": "#f7fdfd", "$type": "color" },
+    "Teal 200": { "$value": "#d7f4f6", "$type": "color" },
+    "Teal 300": { "$value": "#8edfe5", "$type": "color" },
+    "Teal 400": { "$value": "#44ccd5", "$type": "color" },
+    "Teal 500": { "$value": "#1bbfca", "$type": "color" },
+    "Teal 600": { "$value": "#006f93", "$type": "color" },
+    "Teal 700": { "$value": "#07465a", "$type": "color" },
+    "Teal 800": { "$value": "#04252f", "$type": "color" }
+  },
+  "PURPLE": {
+    "Purple 100": { "$value": "#f6f5fe", "$type": "color" },
+    "Purple 200": { "$value": "#e2ddfd", "$type": "color" },
+    "Purple 300": { "$value": "#ad9efa", "$type": "color" },
+    "Purple 400": { "$value": "#836bff", "$type": "color" },
+    "Purple 500": { "$value": "#583aee", "$type": "color" },
+    "Purple 600": { "$value": "#3b1fc6", "$type": "color" },
+    "Purple 700": { "$value": "#271a68", "$type": "color" },
+    "Purple 800": { "$value": "#20092b", "$type": "color" }
+  },
+  "GREEN": {
+    "Green 100": { "$value": "#f6fef6", "$type": "color" },
+    "Green 200": { "$value": "#e0fae0", "$type": "color" },
+    "Green 300": { "$value": "#a6f0a5", "$type": "color" },
+    "Green 400": { "$value": "#4ce160", "$type": "color" },
+    "Green 500": { "$value": "#3cc14e", "$type": "color" },
+    "Green 600": { "$value": "#288034", "$type": "color" },
+    "Green 700": { "$value": "#1b561a", "$type": "color" },
+    "Green 800": { "$value": "#0c310d", "$type": "color" }
+  },
+  "NEUTRAL": {
+    "Neutral 100": { "$value": "#ffffff", "$type": "color" },
+    "Neutral 200": { "$value": "#f7f7f7", "$type": "color" },
+    "Neutral 300": { "$value": "#e5e5e5", "$type": "color" },
+    "Neutral 400": { "$value": "#cccccc", "$type": "color" },
+    "Neutral 500": { "$value": "#8f8f8f", "$type": "color" },
+    "Neutral 600": { "$value": "#707070", "$type": "color" },
+    "Neutral 700": { "$value": "#363636", "$type": "color" },
+    "Neutral 800": { "$value": "#191919", "$type": "color" },
+    "Neutral 900": { "$value": "#000000", "$type": "color" }
+  },
+  "family": {
+    "Headings": { "$value": "Newsreader", "$type": "fontFamily" },
+    "Body": { "$value": "Lexend", "$type": "fontFamily" },
+    "Labels, Links": { "$value": "Lexend", "$type": "fontFamily" },
+    "code": { "$value": "Geist Mono", "$type": "fontFamily" }
+  },
+  "size": {
+    "Super Tiny": { "$value": 10, "$type": "fontSizes" },
+    "Button": { "$value": 12, "$type": "fontSizes" },
+    "Tiny": { "$value": 13, "$type": "fontSizes" },
+    "Small": { "$value": 14, "$type": "fontSizes" },
+    "Regular": { "$value": 16, "$type": "fontSizes" },
+    "Medium": { "$value": 18, "$type": "fontSizes" },
+    "Large": { "$value": 20, "$type": "fontSizes" },
+    "X-Large": { "$value": 24, "$type": "fontSizes" },
+    "Huge": { "$value": 32, "$type": "fontSizes" }
+  },
+  "weight": {
+    "Regular": { "$value": "400", "$type": "fontWeight" },
+    "Medium": { "$value": "500", "$type": "fontWeight" },
+    "Semibold": { "$value": "600", "$type": "fontWeight" },
+    "Bold": { "$value": "700", "$type": "fontWeight" }
+  },
+  "line-height": {
+    "Buttons": { "$value": "11px", "$type": "dimension" },
+    "Tiny Text": { "$value": "15px", "$type": "dimension" },
+    "Small Text": { "$value": "17px", "$type": "dimension" },
+    "Regular Text": { "$value": "24px", "$type": "dimension" },
+    "Large Text": { "$value": "28px", "$type": "dimension" },
+    "Huge Text": { "$value": "40px", "$type": "dimension" },
+    "Titles": { "$value": "80px", "$type": "dimension" },
+    "Website Heading": { "$value": "100px", "$type": "dimension" }
+  },
+  "letter-spacing": {
+    "tighter": { "$value": -0.6, "$type": "letterSpacing" },
+    "tight": { "$value": -0.3, "$type": "letterSpacing" },
+    "normal": { "$value": 0, "$type": "letterSpacing" },
+    "spacious": { "$value": 0.3, "$type": "letterSpacing" },
+    "wide": { "$value": 0.6, "$type": "letterSpacing" },
+    "wider": { "$value": 0.9, "$type": "letterSpacing" },
+    "very wide": { "$value": 1.5, "$type": "letterSpacing" }
+  },
+  "PADDING": {
+    "none": { "$value": "0px", "$type": "dimension" },
+    "xs": { "$value": "2px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "sm": { "$value": "4px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "md": { "$value": "8px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "lg": { "$value": "12px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "xl": { "$value": "16px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "2xl": { "$value": "24px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "3xl": { "$value": "32px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "4xl": { "$value": "40px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "5xl": { "$value": "48px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "6xl": { "$value": "56px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "7xl": { "$value": "64px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "8xl": { "$value": "80px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "9xl": { "$value": "96px", "$type": "dimension", "$description": "Button padding, form inputs" },
+    "10xl": { "$value": "128px", "$type": "dimension", "$description": "Button padding, form inputs" }
+  },
+  "ICONS": {
+    "4xs": { "$value": "12px", "$type": "dimension" },
+    "3xs": { "$value": "13px", "$type": "dimension" },
+    "2xs": { "$value": "14px", "$type": "dimension" },
+    "xs": { "$value": "16px", "$type": "dimension" },
+    "sm": { "$value": "20px", "$type": "dimension" },
+    "med": { "$value": "24px", "$type": "dimension" },
+    "lg": { "$value": "32px", "$type": "dimension" },
+    "xl": { "$value": "40px", "$type": "dimension" },
+    "2xl": { "$value": "48px", "$type": "dimension" },
+    "3xl": { "$value": "56px", "$type": "dimension" },
+    "4xl": { "$value": "64px", "$type": "dimension" }
+  },
+  "BREAKS": {
+    "Inside Padding": { "$value": "16px", "$type": "dimension", "$description": "Page sections, layout" },
+    "Outer Margin": { "$value": "24px", "$type": "dimension", "$description": "Page sections, layout" },
+    "Content Break": { "$value": "32px", "$type": "dimension", "$description": "Page sections, layout" },
+    "Large Content Break": { "$value": "40px", "$type": "dimension", "$description": "Page sections, layout" }
+  },
+  "PAGE MARGINS": {
+    "Margin L": { "$value": "48px", "$type": "dimension", "$description": "XL spacing, hero areas" },
+    "Margin XL": { "$value": "56px", "$type": "dimension", "$description": "XL spacing, hero areas" }
+  },
+  "INPUTS": {
+    "Small": { "$value": "32px", "$type": "dimension" },
+    "Regular": { "$value": "40px", "$type": "dimension" },
+    "Large": { "$value": "44px", "$type": "dimension" }
+  },
+  "radius": {
+    "none": { "$value": "0px", "$type": "dimension", "$description": "No border radius" },
+    "xs": { "$value": "2px", "$type": "dimension", "$description": "Extra small border radius" },
+    "sm": { "$value": "4px", "$type": "dimension", "$description": "Small border radius for buttons and inputs" },
+    "md": { "$value": "8px", "$type": "dimension", "$description": "Medium border radius" },
+    "lg": { "$value": "12px", "$type": "dimension", "$description": "Large border radius" },
+    "xl": { "$value": "16px", "$type": "dimension", "$description": "Extra large border radius" },
+    "full": { "$value": "9999px", "$type": "dimension", "$description": "Fully rounded" }
+  },
+  "STROKE": {
+    "sm": { "$value": "0.5px", "$type": "dimension" },
+    "default": { "$value": "1px", "$type": "dimension" },
+    "md": { "$value": "1.5px", "$type": "dimension" },
+    "lg": { "$value": "2px", "$type": "dimension" }
+  },
+  "TRANSPARENT": {
+    "black": {
+      "4": { "$value": "rgba(0, 0, 0, 0.04)", "$type": "color" },
+      "8": { "$value": "rgba(0, 0, 0, 0.08)", "$type": "color" },
+      "12": { "$value": "rgba(0, 0, 0, 0.12)", "$type": "color" }
+    },
+    "red": {
+      "50": { "$value": "#d50b0b80", "$type": "color" }
+    },
+    "blue": {
+      "50": { "$value": "#0968f680", "$type": "color" }
+    }
+  }
+}

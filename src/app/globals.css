@@ -1,26 +1,126 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--background-primary);
+  --foreground: var(--content-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-lexend);
 }
 
+/*
+ * Dark mode — semantic token overrides.
+ * Primitives stay the same; only the semantic layer remaps.
+ * Source: Figma MODE/DARK.tokens.json
+ */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    /* BACKGROUND */
+    --background-primary: var(--neutral-neutral-900);
+    --background-secondary: var(--neutral-neutral-800);
+    --background-tertiary: var(--neutral-neutral-700);
+    --background-accent: var(--blue-blue-400);
+    --background-attention: var(--red-red-400);
+    --background-attention-light: var(--red-red-200);
+    --background-success: var(--green-green-500);
+    --background-success-light: var(--green-green-200);
+    --background-disabled: var(--neutral-neutral-600);
+    --background-elevated: var(--neutral-neutral-800);
+    --background-secondary-on-elevated: var(--neutral-neutral-900);
+    --background-warning: var(--yellow-yellow-300);
+    --background-inverse: var(--neutral-neutral-100);
+
+    /* CONTENT */
+    --content-primary: var(--neutral-neutral-200);
+    --content-on-primary: var(--neutral-neutral-200);
+    --content-secondary: var(--neutral-neutral-500);
+    --content-disabled: var(--neutral-neutral-600);
+    --content-accent: var(--blue-blue-400);
+    --content-attention: var(--red-red-400);
+    --content-success: var(--green-green-400);
+    --content-icon: var(--neutral-neutral-200);
+    --content-warning-text: var(--yellow-yellow-700);
+    --content-warning-icons: var(--yellow-yellow-300);
+
+    /* LINK */
+    --link-default: var(--blue-blue-400);
+
+    /* BORDER */
+    --border-strong: var(--neutral-neutral-100);
+    --border-medium: var(--neutral-neutral-600);
+    --border-subtle: var(--neutral-neutral-700);
+    --border-accent: var(--blue-blue-400);
+    --border-attention: var(--red-red-400);
+    --border-success: var(--green-green-500);
+    --border-disabled: var(--neutral-neutral-700);
+
+    /* INPUT */
+    --input-hover-dark: rgba(255, 255, 255, 0.08);
+    --input-pressed: rgba(255, 255, 255, 0.12);
+    --input-selected: rgba(255, 255, 255, 0.16);
+    --input-focus: rgba(255, 255, 255, 0.08);
+    --input-hover-light: rgba(0, 0, 0, 0.12);
+    --input-pressed-light: rgba(0, 0, 0, 0.6);
+
+    /* OVERLAY */
+    --overlay-background: rgba(0, 0, 0, 0.64);
+
+    /* Convenience */
+    --background: var(--background-primary);
+    --foreground: var(--content-primary);
   }
+}
+
+/* Manual dark mode toggle via data attribute (for Ladle previews) */
+[data-theme="dark"] {
+  --background-primary: var(--neutral-neutral-900);
+  --background-secondary: var(--neutral-neutral-800);
+  --background-tertiary: var(--neutral-neutral-700);
+  --background-accent: var(--blue-blue-400);
+  --background-attention: var(--red-red-400);
+  --background-attention-light: var(--red-red-200);
+  --background-success: var(--green-green-500);
+  --background-success-light: var(--green-green-200);
+  --background-disabled: var(--neutral-neutral-600);
+  --background-elevated: var(--neutral-neutral-800);
+  --background-secondary-on-elevated: var(--neutral-neutral-900);
+  --background-warning: var(--yellow-yellow-300);
+  --background-inverse: var(--neutral-neutral-100);
+  --content-primary: var(--neutral-neutral-200);
+  --content-on-primary: var(--neutral-neutral-200);
+  --content-secondary: var(--neutral-neutral-500);
+  --content-disabled: var(--neutral-neutral-600);
+  --content-accent: var(--blue-blue-400);
+  --content-attention: var(--red-red-400);
+  --content-success: var(--green-green-400);
+  --content-icon: var(--neutral-neutral-200);
+  --content-warning-text: var(--yellow-yellow-700);
+  --content-warning-icons: var(--yellow-yellow-300);
+  --link-default: var(--blue-blue-400);
+  --border-strong: var(--neutral-neutral-100);
+  --border-medium: var(--neutral-neutral-600);
+  --border-subtle: var(--neutral-neutral-700);
+  --border-accent: var(--blue-blue-400);
+  --border-attention: var(--red-red-400);
+  --border-success: var(--green-green-500);
+  --border-disabled: var(--neutral-neutral-700);
+  --input-hover-dark: rgba(255, 255, 255, 0.08);
+  --input-pressed: rgba(255, 255, 255, 0.12);
+  --input-selected: rgba(255, 255, 255, 0.16);
+  --input-focus: rgba(255, 255, 255, 0.08);
+  --input-hover-light: rgba(0, 0, 0, 0.12);
+  --input-pressed-light: rgba(0, 0, 0, 0.6);
+  --overlay-background: rgba(0, 0, 0, 0.64);
+  --background: var(--background-primary);
+  --foreground: var(--content-primary);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--family-body), sans-serif;
 }

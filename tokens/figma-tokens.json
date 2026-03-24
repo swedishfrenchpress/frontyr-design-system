@@ -1,0 +1,148 @@
+{
+  "BACKGROUND": {
+    "Primary": { "$type": "color", "$value": "{NEUTRAL.Neutral 100}" },
+    "Secondary": { "$type": "color", "$value": "{NEUTRAL.Neutral 200}" },
+    "Tertiary": { "$type": "color", "$value": "{NEUTRAL.Neutral 400}" },
+    "Accent": { "$type": "color", "$value": "{BLUE.Blue 500}" },
+    "Attention": { "$type": "color", "$value": "{RED.Red 600}" },
+    "Success": { "$type": "color", "$value": "{GREEN.Green 600}" },
+    "Disabled": { "$type": "color", "$value": "{NEUTRAL.Neutral 300}" },
+    "Elevated": { "$type": "color", "$value": "{NEUTRAL.Neutral 100}" },
+    "Warning": { "$type": "color", "$value": "{YELLOW.Yellow 200}" },
+    "Attention (Light)": { "$type": "color", "$value": "{RED.Red 100}" },
+    "Success (Light)": { "$type": "color", "$value": "{GREEN.Green 200}" },
+    "Inverse": { "$type": "color", "$value": "{NEUTRAL.Neutral 900}" }
+  },
+  "CONTENT": {
+    "Primary": { "$type": "color", "$value": "{NEUTRAL.Neutral 800}" },
+    "Secondary": { "$type": "color", "$value": "{NEUTRAL.Neutral 600}" },
+    "Disabled": { "$type": "color", "$value": "{NEUTRAL.Neutral 400}" },
+    "Accent": { "$type": "color", "$value": "{BLUE.Blue 500}" },
+    "Attention": { "$type": "color", "$value": "{RED.Red 600}" },
+    "Success": { "$type": "color", "$value": "{GREEN.Green 700}" },
+    "Icon": { "$type": "color", "$value": "{NEUTRAL.Neutral 500}" },
+    "On Primary": { "$type": "color", "$value": "{NEUTRAL.Neutral 100}" },
+    "Warning (Text)": { "$type": "color", "$value": "{YELLOW.Yellow 700}" },
+    "Warning (Icons)": { "$type": "color", "$value": "{YELLOW.Yellow 500}" }
+  },
+  "LINK": {
+    "Default": { "$type": "color", "$value": "{BLUE.Blue 600}" }
+  },
+  "BORDER": {
+    "Strong": { "$type": "color", "$value": "{NEUTRAL.Neutral 700}" },
+    "Medium": { "$type": "color", "$value": "{NEUTRAL.Neutral 500}" },
+    "Subtle": { "$type": "color", "$value": "{NEUTRAL.Neutral 300}" },
+    "Accent": { "$type": "color", "$value": "{BLUE.Blue 500}" },
+    "Attention": { "$type": "color", "$value": "{RED.Red 600}" },
+    "Success": { "$type": "color", "$value": "{GREEN.Green 600}" },
+    "Disabled": { "$type": "color", "$value": "{NEUTRAL.Neutral 400}" }
+  },
+  "INPUT": {
+    "Hover (Dark)": { "$type": "color", "$value": "#0000000a" },
+    "Pressed": { "$type": "color", "$value": "#00000014" },
+    "Selected": { "$type": "color", "$value": "#0000001f" },
+    "Focus": { "$type": "color", "$value": "#0000000a" },
+    "Hover (Light)": { "$type": "color", "$value": "#ffffff14" },
+    "Pressed (Light)": { "$type": "color", "$value": "#ffffff99" }
+  },
+  "OVERLAY": {
+    "Background": { "$type": "color", "$value": "#00000008" }
+  },
+  "Shadows": {
+    "elevation1": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#0000001a", "type": "innerShadow", "x": 0, "y": -1, "blur": 0, "spread": 0 },
+        { "color": "#0000000d", "type": "dropShadow", "x": 0, "y": 1, "blur": 2, "spread": 0 }
+      ]
+    },
+    "elevation2": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#0000001a", "type": "innerShadow", "x": 0, "y": -1, "blur": 0, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 1, "blur": 1, "spread": -0.5 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 3, "blur": 3, "spread": -1.5 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 6, "blur": 6, "spread": -3 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 12, "blur": 12, "spread": -6 },
+        { "color": "#00000014", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 0.5 }
+      ]
+    },
+    "elevation 3": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 1, "blur": 1, "spread": -0.5 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 3, "blur": 3, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 6, "blur": 6, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 12, "blur": 12, "spread": 0 },
+        { "color": "#00000014", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 }
+      ]
+    },
+    "elevation 4": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 1, "blur": 1, "spread": -0.5 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 3, "blur": 3, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 6, "blur": 6, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 12, "blur": 12, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 16, "blur": 16, "spread": 0 },
+        { "color": "#00000014", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 }
+      ]
+    },
+    "card": {
+      "$type": "boxShadow",
+      "$value": "{Shadows.elevation1}",
+      "$description": "Cards, banners, elevated buttons, chips"
+    },
+    "dropdown": {
+      "$type": "boxShadow",
+      "$value": "{Shadows.elevation2}",
+      "$description": "Menu dropdowns"
+    },
+    "drawer": {
+      "$type": "boxShadow",
+      "$value": "{Shadows.elevation 3}",
+      "$description": "Navigation drawers, menus, nav bars, toolbars, rich tooltips"
+    },
+    "modal": {
+      "$type": "boxShadow",
+      "$value": "{Shadows.elevation 4}",
+      "$description": "Dialogs, date/time pickers, FABs, search"
+    }
+  },
+  "Components": {
+    "Focus": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#ffffff", "type": "innerShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 },
+        { "color": "#0000001a", "type": "innerShadow", "x": 0, "y": -1, "blur": 0, "spread": 0 },
+        { "color": "#0000000a", "type": "dropShadow", "x": 0, "y": 1, "blur": 2, "spread": 0 },
+        { "color": "#ffffff", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 },
+        { "color": "#0968f680", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 2 }
+      ]
+    },
+    "Destructive Focus": {
+      "$type": "boxShadow",
+      "$value": [
+        { "color": "#ffffff", "type": "innerShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 },
+        { "color": "#0000001a", "type": "innerShadow", "x": 0, "y": -1, "blur": 0, "spread": 0 },
+        { "color": "#0000000d", "type": "dropShadow", "x": 0, "y": 1, "blur": 2, "spread": 0 },
+        { "color": "#ffffff", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 1 },
+        { "color": "#d50b0b80", "type": "dropShadow", "x": 0, "y": 0, "blur": 0, "spread": 2 }
+      ]
+    }
+  },
+  "bg": {
+    "badge": {
+      "default": { "$type": "color", "$value": "{NEUTRAL.Neutral 100}" },
+      "green": { "$type": "color", "$value": "{GREEN.Green 200}" },
+      "red": { "$type": "color", "$value": "{RED.Red 100}" },
+      "yellow": { "$type": "color", "$value": "{YELLOW.Yellow 200}" },
+      "orange": { "$type": "color", "$value": "{ORANGE.Orange 200}" },
+      "blue": { "$type": "color", "$value": "{BLUE.Blue 100}" },
+      "purple": { "$type": "color", "$value": "{PURPLE.Purple 100}" },
+      "teal": { "$type": "color", "$value": "{TEAL.Teal 100}" },
+      "pink": { "$type": "color", "$value": "{PINK.Pink 100}" },
+      "gray": { "$type": "color", "$value": "{NEUTRAL.Neutral 200}" }
+    }
+  }
+}

@@ -1,0 +1,227 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --frontyr-frontyr-100: #e8edf2;
+  --frontyr-frontyr-200: #c4d1de;
+  --frontyr-frontyr-300: #8a9db3;
+  --frontyr-frontyr-400: #506a85;
+  --frontyr-frontyr-500: #2b4562;
+  --frontyr-frontyr-600: #152f49;
+  --frontyr-frontyr-700: #0a2038;
+  --frontyr-frontyr-800: #051629;
+  --pink-pink-100: #fef6fa;
+  --pink-pink-200: #fcdcec;
+  --pink-pink-300: #f79cc8;
+  --pink-pink-400: #f155a0;
+  --pink-pink-500: #de458e;
+  --pink-pink-600: #a51359;
+  --pink-pink-700: #4b112d;
+  --pink-pink-800: #360606;
+  --red-red-100: #fff5f5;
+  --red-red-200: #ffdede;
+  --red-red-300: #ffa0a0;
+  --red-red-400: #ff5c5c;
+  --red-red-500: #f02d2d;
+  --red-red-600: #d50b0b;
+  --red-red-700: #570303;
+  --red-red-800: #2a0303;
+  --orange-orange-100: #fff9f5;
+  --orange-orange-200: #ffead3;
+  --orange-orange-300: #ffc382;
+  --orange-orange-400: #ff8806;
+  --orange-orange-500: #ec7303;
+  --orange-orange-600: #c15100;
+  --orange-orange-700: #562501;
+  --orange-orange-800: #2f1604;
+  --yellow-yellow-100: #fffcf5;
+  --yellow-yellow-200: #fff8d5;
+  --yellow-yellow-300: #ffe58a;
+  --yellow-yellow-400: #ffbd14;
+  --yellow-yellow-500: #eebb04;
+  --yellow-yellow-600: #855f00;
+  --yellow-yellow-700: #553b06;
+  --yellow-yellow-800: #312102;
+  --blue-blue-100: #f5f9ff;
+  --blue-blue-200: #d4e5fe;
+  --blue-blue-300: #84b4fb;
+  --blue-blue-400: #4d93fc;
+  --blue-blue-500: #0968f6;
+  --blue-blue-600: #0049b8;
+  --blue-blue-700: #002a69;
+  --blue-blue-800: #19133a;
+  --teal-teal-100: #f7fdfd;
+  --teal-teal-200: #d7f4f6;
+  --teal-teal-300: #8edfe5;
+  --teal-teal-400: #44ccd5;
+  --teal-teal-500: #1bbfca;
+  --teal-teal-600: #006f93;
+  --teal-teal-700: #07465a;
+  --teal-teal-800: #04252f;
+  --purple-purple-100: #f6f5fe;
+  --purple-purple-200: #e2ddfd;
+  --purple-purple-300: #ad9efa;
+  --purple-purple-400: #836bff;
+  --purple-purple-500: #583aee;
+  --purple-purple-600: #3b1fc6;
+  --purple-purple-700: #271a68;
+  --purple-purple-800: #20092b;
+  --green-green-100: #f6fef6;
+  --green-green-200: #e0fae0;
+  --green-green-300: #a6f0a5;
+  --green-green-400: #4ce160;
+  --green-green-500: #3cc14e;
+  --green-green-600: #288034;
+  --green-green-700: #1b561a;
+  --green-green-800: #0c310d;
+  --neutral-neutral-100: #ffffff;
+  --neutral-neutral-200: #f7f7f7;
+  --neutral-neutral-300: #e5e5e5;
+  --neutral-neutral-400: #cccccc;
+  --neutral-neutral-500: #8f8f8f;
+  --neutral-neutral-600: #707070;
+  --neutral-neutral-700: #363636;
+  --neutral-neutral-800: #191919;
+  --neutral-neutral-900: #000000;
+  --family-headings: Newsreader;
+  --family-body: Lexend;
+  --family-labels-links: Lexend;
+  --family-code: Geist Mono;
+  --size-super-tiny: 10px;
+  --size-button: 12px;
+  --size-tiny: 13px;
+  --size-small: 14px;
+  --size-regular: 16px;
+  --size-medium: 18px;
+  --size-large: 20px;
+  --size-x-large: 24px;
+  --size-huge: 32px;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --line-height-buttons: 11px;
+  --line-height-tiny-text: 15px;
+  --line-height-small-text: 17px;
+  --line-height-regular-text: 24px;
+  --line-height-large-text: 28px;
+  --line-height-huge-text: 40px;
+  --line-height-titles: 80px;
+  --line-height-website-heading: 100px;
+  --letter-spacing-tighter: -0.6px;
+  --letter-spacing-tight: -0.3px;
+  --letter-spacing-normal: 0px;
+  --letter-spacing-spacious: 0.3px;
+  --letter-spacing-wide: 0.6px;
+  --letter-spacing-wider: 0.9px;
+  --letter-spacing-very-wide: 1.5px;
+  --padding-none: 0px;
+  --padding-xs: 2px; /** Button padding, form inputs */
+  --padding-sm: 4px; /** Button padding, form inputs */
+  --padding-md: 8px; /** Button padding, form inputs */
+  --padding-lg: 12px; /** Button padding, form inputs */
+  --padding-xl: 16px; /** Button padding, form inputs */
+  --padding-2xl: 24px; /** Button padding, form inputs */
+  --padding-3xl: 32px; /** Button padding, form inputs */
+  --padding-4xl: 40px; /** Button padding, form inputs */
+  --padding-5xl: 48px; /** Button padding, form inputs */
+  --padding-6xl: 56px; /** Button padding, form inputs */
+  --padding-7xl: 64px; /** Button padding, form inputs */
+  --padding-8xl: 80px; /** Button padding, form inputs */
+  --padding-9xl: 96px; /** Button padding, form inputs */
+  --padding-10xl: 128px; /** Button padding, form inputs */
+  --icons-4xs: 12px;
+  --icons-3xs: 13px;
+  --icons-2xs: 14px;
+  --icons-xs: 16px;
+  --icons-sm: 20px;
+  --icons-med: 24px;
+  --icons-lg: 32px;
+  --icons-xl: 40px;
+  --icons-2xl: 48px;
+  --icons-3xl: 56px;
+  --icons-4xl: 64px;
+  --breaks-inside-padding: 16px; /** Page sections, layout */
+  --breaks-outer-margin: 24px; /** Page sections, layout */
+  --breaks-content-break: 32px; /** Page sections, layout */
+  --breaks-large-content-break: 40px; /** Page sections, layout */
+  --page-margins-margin-l: 48px; /** XL spacing, hero areas */
+  --page-margins-margin-xl: 56px; /** XL spacing, hero areas */
+  --inputs-small: 32px;
+  --inputs-regular: 40px;
+  --inputs-large: 44px;
+  --radius-none: 0px; /** No border radius */
+  --radius-xs: 2px; /** Extra small border radius */
+  --radius-sm: 4px; /** Small border radius for buttons and inputs */
+  --radius-md: 8px; /** Medium border radius */
+  --radius-lg: 12px; /** Large border radius */
+  --radius-xl: 16px; /** Extra large border radius */
+  --radius-full: 9999px; /** Fully rounded */
+  --stroke-sm: 0.5px;
+  --stroke-default: 1px;
+  --stroke-md: 1.5px;
+  --stroke-lg: 2px;
+  --transparent-black-4: rgba(0, 0, 0, 0.04);
+  --transparent-black-8: rgba(0, 0, 0, 0.08);
+  --transparent-black-12: rgba(0, 0, 0, 0.12);
+  --transparent-red-50: rgba(213, 11, 11, 0.5);
+  --transparent-blue-50: rgba(9, 104, 246, 0.5);
+  --background-primary: #ffffff;
+  --background-secondary: #f7f7f7;
+  --background-tertiary: #cccccc;
+  --background-accent: #0968f6;
+  --background-attention: #d50b0b;
+  --background-success: #288034;
+  --background-disabled: #e5e5e5;
+  --background-elevated: #ffffff;
+  --background-warning: #fff8d5;
+  --background-attention-light: #fff5f5;
+  --background-success-light: #e0fae0;
+  --background-inverse: #000000;
+  --content-primary: #191919;
+  --content-secondary: #707070;
+  --content-disabled: #cccccc;
+  --content-accent: #0968f6;
+  --content-attention: #d50b0b;
+  --content-success: #1b561a;
+  --content-icon: #8f8f8f;
+  --content-on-primary: #ffffff;
+  --content-warning-text: #553b06;
+  --content-warning-icons: #eebb04;
+  --link-default: #0049b8;
+  --border-strong: #363636;
+  --border-medium: #8f8f8f;
+  --border-subtle: #e5e5e5;
+  --border-accent: #0968f6;
+  --border-attention: #d50b0b;
+  --border-success: #288034;
+  --border-disabled: #cccccc;
+  --input-hover-dark: rgba(0, 0, 0, 0.04);
+  --input-pressed: rgba(0, 0, 0, 0.08);
+  --input-selected: rgba(0, 0, 0, 0.12);
+  --input-focus: rgba(0, 0, 0, 0.04);
+  --input-hover-light: rgba(255, 255, 255, 0.08);
+  --input-pressed-light: rgba(255, 255, 255, 0.6);
+  --overlay-background: rgba(0, 0, 0, 0.03);
+  --shadows-elevation1: inset 0px -1px 0px 0px #0000001a, 0px 1px 2px 0px #0000000d;
+  --shadows-elevation2: inset 0px -1px 0px 0px #0000001a, 0px 1px 1px -0.5px #0000000a, 0px 3px 3px -1.5px #0000000a, 0px 6px 6px -3px #0000000a, 0px 12px 12px -6px #0000000a, 0px 0px 0px 0.5px #00000014;
+  --shadows-elevation-3: 0px 1px 1px -0.5px #0000000a, 0px 3px 3px 0px #0000000a, 0px 6px 6px 0px #0000000a, 0px 12px 12px 0px #0000000a, 0px 0px 0px 1px #00000014;
+  --shadows-elevation-4: 0px 1px 1px -0.5px #0000000a, 0px 3px 3px 0px #0000000a, 0px 6px 6px 0px #0000000a, 0px 12px 12px 0px #0000000a, 0px 16px 16px 0px #0000000a, 0px 0px 0px 1px #00000014;
+  --shadows-card: inset 0px -1px 0px 0px #0000001a, 0px 1px 2px 0px #0000000d; /** Cards, banners, elevated buttons, chips */
+  --shadows-dropdown: inset 0px -1px 0px 0px #0000001a, 0px 1px 1px -0.5px #0000000a, 0px 3px 3px -1.5px #0000000a, 0px 6px 6px -3px #0000000a, 0px 12px 12px -6px #0000000a, 0px 0px 0px 0.5px #00000014; /** Menu dropdowns */
+  --shadows-drawer: 0px 1px 1px -0.5px #0000000a, 0px 3px 3px 0px #0000000a, 0px 6px 6px 0px #0000000a, 0px 12px 12px 0px #0000000a, 0px 0px 0px 1px #00000014; /** Navigation drawers, menus, nav bars, toolbars, rich tooltips */
+  --shadows-modal: 0px 1px 1px -0.5px #0000000a, 0px 3px 3px 0px #0000000a, 0px 6px 6px 0px #0000000a, 0px 12px 12px 0px #0000000a, 0px 16px 16px 0px #0000000a, 0px 0px 0px 1px #00000014; /** Dialogs, date/time pickers, FABs, search */
+  --components-focus: inset 0px 0px 0px 1px #ffffff, inset 0px -1px 0px 0px #0000001a, 0px 1px 2px 0px #0000000a, 0px 0px 0px 1px #ffffff, 0px 0px 0px 2px #0968f680;
+  --components-destructive-focus: inset 0px 0px 0px 1px #ffffff, inset 0px -1px 0px 0px #0000001a, 0px 1px 2px 0px #0000000d, 0px 0px 0px 1px #ffffff, 0px 0px 0px 2px #d50b0b80;
+  --bg-badge-default: #ffffff;
+  --bg-badge-green: #e0fae0;
+  --bg-badge-red: #fff5f5;
+  --bg-badge-yellow: #fff8d5;
+  --bg-badge-orange: #ffead3;
+  --bg-badge-blue: #f5f9ff;
+  --bg-badge-purple: #f6f5fe;
+  --bg-badge-teal: #f7fdfd;
+  --bg-badge-pink: #fef6fa;
+  --bg-badge-gray: #f7f7f7;
+}

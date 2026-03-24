@@ -19,6 +19,7 @@
 
 # production
 /build
+/build-ladle
 
 # misc
 .DS_Store

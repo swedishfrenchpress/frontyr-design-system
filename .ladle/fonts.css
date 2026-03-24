@@ -1,0 +1,57 @@
+/* Lexend — Body & Labels */
+@font-face {
+  font-family: "Lexend";
+  src: url("../node_modules/@fontsource/lexend/files/lexend-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../node_modules/@fontsource/lexend/files/lexend-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../node_modules/@fontsource/lexend/files/lexend-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lexend";
+  src: url("../node_modules/@fontsource/lexend/files/lexend-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Newsreader — Headings */
+@font-face {
+  font-family: "Newsreader";
+  src: url("../node_modules/@fontsource/newsreader/files/newsreader-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../node_modules/@fontsource/newsreader/files/newsreader-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("../node_modules/@fontsource/newsreader/files/newsreader-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
