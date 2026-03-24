@@ -17,16 +17,17 @@ import {
   TablePagination,
 } from "@/components/ui/table";
 import { IconAdd } from "@/components/icons";
-import { Search, UserMultiple, Checkmark, CheckmarkOutline, Time, ChevronDown, Draggable, OverflowMenuVertical, Close, Filter, Dashboard as DashboardIcon, Settings, Send } from "@carbon/icons-react";
+import { Search, UserMultiple, Checkmark, CheckmarkOutline, Time, ChevronDown, Draggable, OverflowMenuVertical, Close, Filter, Home, Settings } from "@carbon/icons-react";
+import { PricingQuickProposal, Finance } from "@carbon/icons-react";
 
 /* ---- Nav items ---- */
 
 const navItems: NavItem[] = [
-  { label: "Dashboard", icon: <DashboardIcon size={16} /> },
-  { label: "Users", icon: <UserMultiple size={16} />, active: true },
-  { label: "Transactions", icon: <Send size={16} /> },
-  { label: "Customers", icon: <UserMultiple size={16} /> },
-  { label: "Settings", icon: <Settings size={16} /> },
+  { label: "Dashboard", icon: <Home size={16} />, href: "/dashboard" },
+  { label: "Users", icon: <UserMultiple size={16} />, href: "/users", active: true },
+  { label: "Transactions", icon: <PricingQuickProposal size={16} />, href: "/transactions" },
+  { label: "Customers", icon: <Finance size={16} />, href: "/customers" },
+  { label: "Settings", icon: <Settings size={16} />, href: "/settings" },
 ];
 
 /* ---- Stat card ---- */
@@ -103,23 +104,23 @@ export default function DashboardPage() {
         logo={<Logo />}
         showFooter={false}
         onToggle={() => {}}
-        className="bg-[var(--background-primary)] shrink-0"
+        className="bg-[var(--background-secondary)] border-r border-[var(--border-subtle)] shrink-0"
       />
 
       {/* Main area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top bar */}
-        <header className="flex items-center justify-between h-16 px-[var(--padding-2xl)] bg-[var(--background-primary)] shrink-0">
+        <header className="flex items-center justify-between h-16 px-[var(--padding-2xl)] shrink-0">
           <div />
-          <div className="flex items-center gap-[var(--padding-md)] w-[240px] h-8 px-[var(--padding-lg)] rounded-[var(--radius-sm)] border border-[var(--border-subtle)] bg-[var(--background-primary)]">
-            <Search size={16} />
+          <div className="flex items-center gap-[var(--padding-md)] w-[240px] h-8 px-[var(--padding-lg)] rounded-[var(--radius-sm)] border-[0.5px] border-[var(--border-subtle)] bg-[var(--input-hover-dark)]">
+            <Search size={14} className="text-[color:var(--content-secondary)]" />
             <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-secondary)]">
               Search
             </span>
           </div>
           <div className="flex items-center gap-[var(--padding-md)]">
             <div className="size-6 rounded-full bg-[var(--background-tertiary)]" />
-            <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] text-[color:var(--content-primary)] uppercase">
+            <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] tracking-[-0.3px] uppercase">
               Jason Williams
             </span>
             <ChevronDown size={16} />
@@ -127,10 +128,12 @@ export default function DashboardPage() {
         </header>
 
         {/* Content area */}
-        <main className="flex-1 overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
-          {/* Breadcrumbs + New User button */}
-          <div className="flex items-center justify-between mb-[var(--padding-2xl)]">
-            <Breadcrumbs items={[{ label: "Users" }]} />
+        <main className="flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={[{ label: "", icon: <UserMultiple size={16} /> }, { label: "Users" }]} className="mb-[var(--padding-2xl)]" />
+
+          {/* New User button */}
+          <div className="flex justify-end mb-[var(--padding-2xl)]">
             <Button variant="primary" buttonType="text-icon" icon={<IconAdd />}>
               New User
             </Button>
