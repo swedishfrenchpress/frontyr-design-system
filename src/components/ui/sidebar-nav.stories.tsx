@@ -1,46 +1,24 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 import { SidebarNav, type NavItem, type NavSection } from "./sidebar-nav";
+import { Star, Dashboard, Grid as GridIcon, Send, Settings, UserMultiple } from "@carbon/icons-react";
 
-/* Placeholder logo */
-const Logo = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="size-6">
-    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-  </svg>
-);
+const Logo = () => <Star size={24} />;
 
-/* Placeholder section icons */
-const MeterIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1" />
-    <path d="M8 4V8L11 10" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-  </svg>
-);
+const MeterIcon = () => <Dashboard size={16} />;
 
-const GridIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1" />
-    <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1" />
-    <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1" />
-    <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1" />
-  </svg>
-);
+const GridIconLocal = () => <GridIcon size={16} />;
 
-const DeployIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M8 2L14 8L8 14" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M2 8H14" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-  </svg>
-);
+const DeployIcon = () => <Send size={16} />;
 
 /* ---- Data ---- */
 
 const classicItems: NavItem[] = [
-  { label: "Dashboard", icon: <MeterIcon /> },
-  { label: "Events", icon: <GridIcon /> },
-  { label: "Agents", icon: <GridIcon />, active: true },
+  { label: "Dashboard", icon: <Dashboard size={16} /> },
+  { label: "Events", icon: <GridIconLocal /> },
+  { label: "Agents", icon: <GridIconLocal />, active: true },
   { label: "Playbooks", icon: <DeployIcon /> },
-  { label: "Campaigns", icon: <GridIcon /> },
+  { label: "Campaigns", icon: <GridIconLocal /> },
 ];
 
 const treeSections: NavSection[] = [
@@ -55,7 +33,7 @@ const treeSections: NavSection[] = [
   },
   {
     label: "Orchestrate",
-    icon: <GridIcon />,
+    icon: <GridIconLocal />,
     items: [
       { label: "Agents", href: "#", active: true },
       { label: "Campaigns", href: "#" },

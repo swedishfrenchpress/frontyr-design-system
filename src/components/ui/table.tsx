@@ -1,38 +1,12 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { ArrowsVertical, Checkmark, ChevronLeft, ChevronRight } from "@carbon/icons-react";
 
 /**
  * Component: Table (composable sub-component system)
  * Figma source: node 123:395
  * Cell height: 64px, border-bottom --border-subtle, px --padding-xl, py --padding-lg
  */
-
-/* ---- Inline icons ---- */
-
-const SortIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4 shrink-0">
-    <path d="M8 3L11 6H5L8 3Z" fill="currentColor" />
-    <path d="M8 13L5 10H11L8 13Z" fill="currentColor" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <path d="M13 4L6.5 10.5L3 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ChevronLeftIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <path d="M10 4L6 8L10 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ChevronRightIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <path d="M6 4L10 8L6 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
 
 /* ---- Table root ---- */
 
@@ -88,7 +62,7 @@ const TableHead = React.forwardRef<HTMLDivElement, TableHeadProps>(
       <span className="truncate">{children}</span>
       {sortable && (
         <span className="ml-[var(--padding-md)] text-[color:var(--content-icon)]">
-          <SortIcon />
+          <ArrowsVertical size={16} />
         </span>
       )}
     </div>
@@ -232,7 +206,7 @@ const TableCellIcon = React.forwardRef<HTMLDivElement, TableCellIconProps>(
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
       {...props}
     >
-      {icon ?? <CheckIcon />}
+      {icon ?? <Checkmark size={16} />}
     </div>
   )
 );
@@ -327,7 +301,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
             className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
             aria-label="Previous page"
           >
-            <ChevronLeftIcon />
+            <ChevronLeft size={16} />
           </button>
           <button
             onClick={() => onPageChange?.(page + 1)}
@@ -335,7 +309,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
             className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
             aria-label="Next page"
           >
-            <ChevronRightIcon />
+            <ChevronRight size={16} />
           </button>
         </div>
       </div>

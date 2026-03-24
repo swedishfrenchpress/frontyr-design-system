@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { CheckmarkFilled, ErrorFilled, WarningAltFilled } from "@carbon/icons-react";
 
 /**
  * Component: TextInput
@@ -27,33 +28,6 @@ const inputSizeVariants = cva(
     },
     defaultVariants: { size: "md" },
   }
-);
-
-/* Status icons */
-const SuccessDot = () => (
-  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="size-[13px] shrink-0">
-    <circle cx="6.5" cy="6.5" r="5" fill="var(--content-success)" />
-  </svg>
-);
-
-const ErrorDot = () => (
-  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="size-[13px] shrink-0">
-    <circle cx="6.5" cy="6.5" r="5" fill="var(--content-attention)" />
-  </svg>
-);
-
-const WarningTriangle = () => (
-  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" className="size-[13px] shrink-0">
-    <path d="M6.5 1L12 11.5H1L6.5 1Z" fill="var(--content-warning-icons)" />
-  </svg>
-);
-
-const ErrorIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4 shrink-0">
-    <circle cx="8" cy="8" r="7" fill="var(--content-attention)" />
-    <path d="M8 4.5V8.5" stroke="var(--content-on-primary)" strokeWidth="1.5" strokeLinecap="round" />
-    <circle cx="8" cy="11" r="0.75" fill="var(--content-on-primary)" />
-  </svg>
 );
 
 interface TextInputProps
@@ -147,7 +121,7 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
           />
           {state === "error" && (
             <span className="absolute right-[var(--padding-lg)] pointer-events-none">
-              <ErrorIcon />
+              <ErrorFilled size={16} className="shrink-0 fill-[var(--content-attention)]" />
             </span>
           )}
         </div>
@@ -166,13 +140,13 @@ const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
               )}
             >
               {state === "success" && (
-                <span className="pr-[var(--padding-sm)]"><SuccessDot /></span>
+                <span className="pr-[var(--padding-sm)]"><CheckmarkFilled size={13} className="shrink-0 fill-[var(--content-success)]" /></span>
               )}
               {state === "error" && (
-                <span className="pr-[var(--padding-sm)]"><ErrorDot /></span>
+                <span className="pr-[var(--padding-sm)]"><ErrorFilled size={13} className="shrink-0 fill-[var(--content-attention)]" /></span>
               )}
               {state === "warning" && (
-                <span className="pr-[var(--padding-sm)]"><WarningTriangle /></span>
+                <span className="pr-[var(--padding-sm)]"><WarningAltFilled size={13} className="shrink-0 fill-[var(--content-warning-icons)]" /></span>
               )}
               <p
                 className={cn(

@@ -102,8 +102,8 @@
   },
   "family": {
     "Headings": { "$value": "Newsreader", "$type": "fontFamily" },
-    "Body": { "$value": "Lexend", "$type": "fontFamily" },
-    "Labels, Links": { "$value": "Lexend", "$type": "fontFamily" },
+    "Body": { "$value": "Geist", "$type": "fontFamily" },
+    "Labels, Links": { "$value": "Geist", "$type": "fontFamily" },
     "code": { "$value": "Geist Mono", "$type": "fontFamily" }
   },
   "size": {

@@ -1,11 +1,11 @@
 import * as React from "react";
+import { Checkmark, Subtract } from "@carbon/icons-react";
 import { cn } from "@/lib/utils";
 
 /**
  * Component: Checkbox
  * Figma source: node 124:2639 (standalone), 815:75 (with label)
  * Box: 20x20 with 2px padding = 24x24 total
- * Font: Lexend (--family-body)
  */
 
 interface CheckboxProps
@@ -17,43 +17,6 @@ interface CheckboxProps
   /** Description text below the label */
   description?: string;
 }
-
-const CheckIcon = () => (
-  <svg
-    width="12"
-    height="12"
-    viewBox="0 0 12 12"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="size-3"
-  >
-    <path
-      d="M10 3L4.5 8.5L2 6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-const MinusIcon = () => (
-  <svg
-    width="12"
-    height="12"
-    viewBox="0 0 12 12"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="size-3"
-  >
-    <path
-      d="M2.5 6H9.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
   (
@@ -117,15 +80,15 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           )}
         >
           {indeterminate ? (
-            <MinusIcon />
+            <Subtract size={12} />
           ) : (
             /* Show check when controlled=checked OR uncontrolled via CSS */
             <>
               {isControlled ? (
-                isChecked && <CheckIcon />
+                isChecked && <Checkmark size={12} />
               ) : (
                 <span className="hidden peer-checked:group-[]:inline-flex">
-                  <CheckIcon />
+                  <Checkmark size={12} />
                 </span>
               )}
             </>

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { OverflowMenuHorizontal } from "@carbon/icons-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -23,21 +24,6 @@ interface BreadcrumbsProps {
   maxItems?: number;
   className?: string;
 }
-
-const EllipsisIcon = () => (
-  <svg
-    width="16"
-    height="16"
-    viewBox="0 0 16 16"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="size-4"
-  >
-    <circle cx="3" cy="8" r="1" fill="currentColor" />
-    <circle cx="8" cy="8" r="1" fill="currentColor" />
-    <circle cx="13" cy="8" r="1" fill="currentColor" />
-  </svg>
-);
 
 const Separator = () => (
   <li
@@ -123,7 +109,7 @@ const Breadcrumbs = React.forwardRef<HTMLElement, BreadcrumbsProps>(
                     <Separator />
                     <li>
                       <span className="inline-flex items-center text-[color:var(--content-secondary)]">
-                        <EllipsisIcon />
+                        <OverflowMenuHorizontal size={16} />
                       </span>
                     </li>
                   </>

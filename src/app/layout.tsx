@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Lexend, Newsreader } from "next/font/google";
+import { Geist, Newsreader } from "next/font/google";
 import "./globals.css";
 
-const lexend = Lexend({
-  variable: "--font-lexend",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
 });
 
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className={`${lexend.variable} ${newsreader.variable} h-full antialiased`}>
+    <html lang="en" data-theme="light" className={`${geist.variable} ${newsreader.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

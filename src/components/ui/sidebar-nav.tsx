@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Grid, OverflowMenuVertical } from "@carbon/icons-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -6,35 +7,6 @@ import { cn } from "@/lib/utils";
  * Figma source: node 230:699
  * Variants: Classic (flat links), Tree (grouped sections), Collapsed (logo only)
  */
-
-/* ---- Inline icons (menu toggle & overflow) ---- */
-
-const MenuOpenIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <rect x="3" y="3" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="9" y="3" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="3" y="9" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="9" y="9" width="4" height="4" rx="0.5" fill="currentColor" />
-  </svg>
-);
-
-const MenuCollapsedIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <rect x="3" y="3" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="9" y="3" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="3" y="9" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="9" y="9" width="4" height="4" rx="0.5" fill="currentColor" />
-    <rect x="7" y="5" width="1" height="6" fill="currentColor" />
-  </svg>
-);
-
-const OverflowMenuIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="8" cy="4" r="1" fill="currentColor" />
-    <circle cx="8" cy="8" r="1" fill="currentColor" />
-    <circle cx="8" cy="12" r="1" fill="currentColor" />
-  </svg>
-);
 
 /* ---- Types ---- */
 
@@ -177,7 +149,7 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarNavProps>(
               className="shrink-0 size-4 text-[color:var(--content-primary)] cursor-pointer"
               aria-label={isCollapsed ? "Expand navigation" : "Collapse navigation"}
             >
-              {isCollapsed ? <MenuCollapsedIcon /> : <MenuOpenIcon />}
+              {isCollapsed ? <Grid size={16} /> : <Grid size={16} />}
             </button>
           )}
         </div>
@@ -218,7 +190,7 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarNavProps>(
                 className="shrink-0 text-[color:var(--content-primary)] cursor-pointer"
                 aria-label="User menu"
               >
-                <OverflowMenuIcon />
+                <OverflowMenuVertical size={16} />
               </button>
             )}
           </div>

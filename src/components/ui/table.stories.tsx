@@ -12,13 +12,7 @@ import {
   TableCellBadge,
   TablePagination,
 } from "./table";
-
-/* Check icon for the icon column */
-const CheckIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <path d="M13 4L6.5 10.5L3 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+import { Checkmark } from "@carbon/icons-react";
 
 /* Demo data */
 const rows = [
@@ -47,7 +41,7 @@ export const Demo: Story = () => (
         <TableRow key={i}>
           <TableCell width={400} description={row.desc}>{row.name}</TableCell>
           <TableCell width={250}>{row.amount}</TableCell>
-          <TableCellIcon width={124} icon={<CheckIcon />} />
+          <TableCellIcon width={124} icon={<Checkmark size={16} />} />
           <TableCell width={250}>{row.total}</TableCell>
         </TableRow>
       ))}
@@ -128,7 +122,7 @@ export const DarkMode: Story = () => (
           <TableRow key={i}>
             <TableCell width={400} description={row.desc}>{row.name}</TableCell>
             <TableCell width={250}>{row.amount}</TableCell>
-            <TableCellIcon width={124} icon={<CheckIcon />} />
+            <TableCellIcon width={124} icon={<Checkmark size={16} />} />
             <TableCell width={250}>{row.total}</TableCell>
           </TableRow>
         ))}

@@ -1,18 +1,12 @@
 import type { Story } from "@ladle/react";
 import * as React from "react";
 import { Breadcrumbs } from "./breadcrumbs";
-import { IconAdd } from "@/components/icons";
+import { Add, Folder } from "@carbon/icons-react";
 
 const SectionLabel = ({ children }: { children: string }) => (
   <p className="font-['Lexend',sans-serif] text-[10px] text-[var(--content-secondary)] uppercase tracking-[0.3px]">
     {children}
   </p>
-);
-
-const FolderIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" {...props}>
-    <path d="M2 3h5l1 1h6v9H2V3z" stroke="currentColor" strokeWidth="1" fill="none" />
-  </svg>
 );
 
 /* ---------- Interactive ---------- */
@@ -68,7 +62,7 @@ export const FourItems: Story = () => (
 export const WithIcons: Story = () => (
   <Breadcrumbs
     items={[
-      { label: "Workflows", href: "#", icon: <FolderIcon /> },
+      { label: "Workflows", href: "#", icon: <Folder size={16} /> },
       { label: "Customer Support", href: "#" },
       { label: "Settings" },
     ]}
@@ -107,7 +101,7 @@ export const DarkModeVariants: Story = () => (
       />
       <Breadcrumbs
         items={[
-          { label: "Workflows", href: "#", icon: <FolderIcon /> },
+          { label: "Workflows", href: "#", icon: <Folder size={16} /> },
           { label: "Customer Support", href: "#" },
           { label: "Settings" },
         ]}
@@ -139,7 +133,7 @@ export const AllVariants: Story = () => (
     <div>
       <SectionLabel>3 items with icon</SectionLabel>
       <div className="mt-2">
-        <Breadcrumbs items={[{ label: "Workflows", href: "#", icon: <FolderIcon /> }, { label: "Customer Support", href: "#" }, { label: "Settings" }]} />
+        <Breadcrumbs items={[{ label: "Workflows", href: "#", icon: <Folder size={16} /> }, { label: "Customer Support", href: "#" }, { label: "Settings" }]} />
       </div>
     </div>
     <div>

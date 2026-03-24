@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SidebarNav, type NavItem } from "@/components/ui/sidebar-nav";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
@@ -16,70 +17,16 @@ import {
   TablePagination,
 } from "@/components/ui/table";
 import { IconAdd } from "@/components/icons";
-
-/* ---- Inline icons ---- */
-
-const SearchIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M11 11L14 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-  </svg>
-);
-
-const UsersIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="8" cy="5" r="3" stroke="currentColor" strokeWidth="1" />
-    <path d="M2 14C2 11.5 4.5 9.5 8 9.5S14 11.5 14 14" stroke="currentColor" strokeWidth="1" />
-  </svg>
-);
-
-const CheckCircleIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1" />
-    <path d="M5 8L7 10L11 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const ClockIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1" />
-    <path d="M8 5V8L10 10" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
-  </svg>
-);
-
-const ChevronDownIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const DragIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4 text-[color:var(--content-icon)]">
-    <circle cx="6" cy="5" r="1" fill="currentColor" />
-    <circle cx="10" cy="5" r="1" fill="currentColor" />
-    <circle cx="6" cy="8" r="1" fill="currentColor" />
-    <circle cx="10" cy="8" r="1" fill="currentColor" />
-    <circle cx="6" cy="11" r="1" fill="currentColor" />
-    <circle cx="10" cy="11" r="1" fill="currentColor" />
-  </svg>
-);
-
-const OverflowIcon = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-    <circle cx="8" cy="4" r="1" fill="currentColor" />
-    <circle cx="8" cy="8" r="1" fill="currentColor" />
-    <circle cx="8" cy="12" r="1" fill="currentColor" />
-  </svg>
-);
+import { Search, UserMultiple, CheckmarkOutline, Time, ChevronDown, Draggable, OverflowMenuVertical, Close, Filter, Dashboard as DashboardIcon, Settings, Send, Star } from "@carbon/icons-react";
 
 /* ---- Nav items ---- */
 
 const navItems: NavItem[] = [
-  { label: "Dashboard", icon: <UsersIcon /> },
-  { label: "Users", icon: <UsersIcon />, active: true },
-  { label: "Transactions", icon: <CheckCircleIcon /> },
-  { label: "Customers", icon: <UsersIcon /> },
-  { label: "Settings", icon: <ClockIcon /> },
+  { label: "Dashboard", icon: <DashboardIcon size={16} /> },
+  { label: "Users", icon: <UserMultiple size={16} />, active: true },
+  { label: "Transactions", icon: <Send size={16} /> },
+  { label: "Customers", icon: <UserMultiple size={16} /> },
+  { label: "Settings", icon: <Settings size={16} /> },
 ];
 
 /* ---- Stat card ---- */
@@ -99,7 +46,7 @@ function StatCard({
         <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
           {title}
         </span>
-        <DragIcon />
+        <Draggable size={16} />
       </div>
       <div className="flex items-center justify-between">
         <Button variant="secondary" buttonType="icon-only" icon={icon} aria-label={title} />
@@ -122,15 +69,27 @@ const users = [
 
 /* ---- Logo ---- */
 
-const Logo = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="size-6">
-    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
-  </svg>
-);
+const Logo = () => <Star size={24} />;
 
 /* ---- Page ---- */
 
 export default function DashboardPage() {
+  const [filters, setFilters] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    fromDate: "",
+    toDate: "",
+  });
+
+  const hasFilters = Object.values(filters).some((v) => v.trim() !== "");
+
+  const updateFilter = (key: keyof typeof filters) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    setFilters((prev) => ({ ...prev, [key]: e.target.value }));
+
+  const clearFilters = () =>
+    setFilters({ firstName: "", lastName: "", email: "", fromDate: "", toDate: "" });
+
   return (
     <div className="flex h-screen bg-[var(--background-secondary)]">
       {/* Sidebar */}
@@ -150,7 +109,7 @@ export default function DashboardPage() {
         <header className="flex items-center justify-between h-16 px-[var(--padding-2xl)] bg-[var(--background-primary)] shrink-0">
           <div />
           <div className="flex items-center gap-[var(--padding-md)] w-[240px] h-8 px-[var(--padding-lg)] rounded-[var(--radius-sm)] border border-[var(--border-subtle)] bg-[var(--background-primary)]">
-            <SearchIcon />
+            <Search size={16} />
             <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-secondary)]">
               Search
             </span>
@@ -160,7 +119,7 @@ export default function DashboardPage() {
             <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] text-[color:var(--content-primary)] uppercase">
               Jason Williams
             </span>
-            <ChevronDownIcon />
+            <ChevronDown size={16} />
           </div>
         </header>
 
@@ -176,35 +135,31 @@ export default function DashboardPage() {
 
           {/* Stat cards */}
           <div className="flex gap-[var(--padding-2xl)] mb-[var(--padding-2xl)]">
-            <StatCard title="Total Users" value={44} icon={<UsersIcon />} />
-            <StatCard title="Verified Users" value={44} icon={<CheckCircleIcon />} />
-            <StatCard title="Unverified Users" value={44} icon={<ClockIcon />} />
+            <StatCard title="Total Users" value={44} icon={<UserMultiple size={16} />} />
+            <StatCard title="Verified Users" value={44} icon={<CheckmarkOutline size={16} />} />
+            <StatCard title="Unverified Users" value={44} icon={<Time size={16} />} />
           </div>
 
           {/* Filter row 1 */}
           <div className="flex gap-[var(--padding-xl)] mb-[var(--padding-xl)]">
-            <TextInput label="First Name" placeholder="Filter by email" size="sm" className="flex-1" />
-            <TextInput label="Last Name" placeholder="Filter by phone" size="sm" className="flex-1" />
-            <TextInput label="Email" placeholder="Filter by username" size="sm" className="flex-1" />
+            <TextInput label="First Name" placeholder="Filter by email" size="sm" className="flex-1" value={filters.firstName} onChange={updateFilter("firstName")} />
+            <TextInput label="Last Name" placeholder="Filter by phone" size="sm" className="flex-1" value={filters.lastName} onChange={updateFilter("lastName")} />
+            <TextInput label="Email" placeholder="Filter by username" size="sm" className="flex-1" value={filters.email} onChange={updateFilter("email")} />
           </div>
 
           {/* Filter row 2 */}
           <div className="flex items-end gap-[var(--padding-xl)] mb-[var(--padding-2xl)]">
-            <TextInput label="From Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" />
-            <TextInput label="To Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" />
+            <TextInput label="From Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" value={filters.fromDate} onChange={updateFilter("fromDate")} />
+            <TextInput label="To Date" placeholder="MM-DD-YYYY" size="sm" className="w-[368px] shrink-0" value={filters.toDate} onChange={updateFilter("toDate")} />
             <div className="flex-1" />
             <div className="flex items-center gap-[var(--padding-md)] pb-[var(--padding-md)]">
-              <Button variant="secondary" size="sm" buttonType="text-icon" icon={
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-                  <path d="M4 4L12 12M12 4L4 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                </svg>
+              <Button variant="secondary" size="sm" buttonType="text-icon" disabled={!hasFilters} onClick={clearFilters} icon={
+                <Close size={16} />
               }>
                 Clear
               </Button>
-              <Button variant="primary" size="sm" buttonType="text-icon" icon={
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="size-4">
-                  <path d="M2 3H14L9 9V13L7 14V9L2 3Z" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+              <Button variant="primary" size="sm" buttonType="text-icon" disabled={!hasFilters} icon={
+                <Filter size={16} />
               }>
                 Filter
               </Button>
