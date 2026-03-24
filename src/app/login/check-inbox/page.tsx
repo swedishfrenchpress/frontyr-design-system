@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Renew } from "@carbon/icons-react";
 
@@ -20,6 +21,8 @@ function DotLoaderDark() {
 }
 
 export default function CheckInboxPage() {
+  const router = useRouter();
+
   return (
     <div className="flex flex-col gap-[var(--padding-xl)]">
       {/* Top section */}
@@ -46,6 +49,7 @@ export default function CheckInboxPage() {
         buttonType="text-icon"
         icon={<Renew size={16} />}
         className="self-start"
+        onClick={() => router.push("/onboarding")}
       >
         Send again
       </Button>
