@@ -4,11 +4,8 @@ export default function LoginLayout({ children }: { children: React.ReactNode })
       {/* Left side */}
       <div className="relative flex flex-col w-[46%] shrink-0 h-full">
         {/* ACME BANK logo */}
-        <div className="flex items-center gap-[3px] px-6 pt-6">
-          <img src="/images/acme-logo.png" alt="" className="size-4 object-contain" />
-          <span className="font-['Inter',sans-serif] font-bold text-[12.4px] text-black leading-[19px] whitespace-nowrap">
-            ACME BANK
-          </span>
+        <div className="flex items-center px-6 pt-6">
+          <img src="/images/acme-bank-logo.png" alt="ACME BANK" className="h-5" />
         </div>
 
         {/* Page content — vertically centered */}
