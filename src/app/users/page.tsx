@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { SidebarNav, type NavItem } from "@/components/ui/sidebar-nav";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
@@ -13,7 +14,6 @@ import {
   TableRow,
   TableCell,
   TableCellBadge,
-  TableCellAction,
   TablePagination,
 } from "@/components/ui/table";
 import { IconAdd } from "@/components/icons";
@@ -79,6 +79,7 @@ const Logo = () => (
 /* ---- Page ---- */
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [filters, setFilters] = useState({
     firstName: "",
     lastName: "",
@@ -198,10 +199,19 @@ export default function DashboardPage() {
                     color={user.status === "Verified" ? "green" : "yellow"}
                   />
                   <TableCell width="16.67%">{user.date}</TableCell>
-                  <TableCellAction
-                    width="16.67%"
-                    actions={[{ label: "View" }]}
-                  />
+                  <TableCell width="16.67%" align="right">
+                    <div className="flex items-center justify-end gap-[var(--padding-md)] w-full">
+                      <button
+                        onClick={() => router.push("/users/erik-cativo")}
+                        className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] cursor-pointer hover:text-[color:var(--content-secondary)] transition-[color] duration-300"
+                      >
+                        View
+                      </button>
+                      <button className="text-[color:var(--content-primary)] cursor-pointer">
+                        <OverflowMenuVertical size={16} />
+                      </button>
+                    </div>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
