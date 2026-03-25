@@ -5,6 +5,7 @@ import { SidebarNav, type NavItem } from "@/components/ui/sidebar-nav";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
+import { Avatar } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
 import {
   Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TableCellBadge, TablePagination,
@@ -135,9 +136,7 @@ export default function UserDetailPage() {
             {/* Top: avatar + name + badge + change role */}
             <div className="flex items-center justify-between mb-[var(--padding-xl)]">
               <div className="flex items-center gap-[var(--padding-lg)]">
-                <div className="size-11 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center shrink-0">
-                  <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] text-[color:var(--content-secondary)]">EC</span>
-                </div>
+                <Avatar initials="EC" size="lg" />
                 <div className="flex items-center gap-[var(--padding-md)]">
                   <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-regular)] text-[color:var(--content-primary)]">
                     Erik Cativo

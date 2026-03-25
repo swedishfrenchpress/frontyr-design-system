@@ -7,6 +7,7 @@ import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { TextInput } from "@/components/ui/text-input";
 import { Pill } from "@/components/ui/pill";
+import { Avatar } from "@/components/ui/avatar";
 import {
   Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TablePagination,
 } from "@/components/ui/table";
@@ -64,7 +65,7 @@ function StatCard({
         "flex flex-col gap-[var(--padding-md)] p-[var(--padding-xl)] rounded-[var(--radius-sm)] cursor-pointer text-left",
         "border bg-[var(--background-primary)] transition-[border-color] duration-300",
         active
-          ? "border-[1.5px] border-[var(--content-primary)]"
+          ? "border border-[var(--border-medium)]"
           : "border border-[var(--border-subtle)] hover:border-[var(--border-medium)]"
       )}
     >
@@ -235,11 +236,7 @@ export default function UsersPage() {
                   <TableRow key={`${user.email}-${i}`}>
                     <TableCell width="35%">
                       <div className="flex items-center gap-[var(--padding-lg)]">
-                        <div className="size-[34px] rounded-full bg-[var(--background-tertiary)] flex items-center justify-center shrink-0">
-                          <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-button)] text-[color:var(--content-secondary)]">
-                            {user.initials}
-                          </span>
-                        </div>
+                        <Avatar initials={user.initials} size="sm" />
                         <div className="min-w-0">
                           <div className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] text-[color:var(--content-primary)] truncate">
                             {user.name}
