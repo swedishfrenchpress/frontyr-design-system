@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Pill } from "@/components/ui/pill";
 import { ArrowsVertical, Checkmark, ChevronLeft, ChevronRight } from "@carbon/icons-react";
 
 /**
@@ -221,14 +222,6 @@ interface TableCellBadgeProps extends React.ComponentProps<"div"> {
   width?: string | number;
 }
 
-const badgeColorMap = {
-  green: "bg-[var(--bg-badge-green)] text-[color:var(--content-success)]",
-  red: "bg-[var(--bg-badge-red)] text-[color:var(--content-attention)]",
-  yellow: "bg-[var(--bg-badge-yellow)] text-[color:var(--content-warning-text)]",
-  blue: "bg-[var(--bg-badge-blue)] text-[color:var(--content-accent)]",
-  gray: "bg-[var(--bg-badge-gray)] text-[color:var(--content-secondary)]",
-  default: "bg-[var(--bg-badge-default)] text-[color:var(--content-primary)]",
-};
 
 const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
   ({ className, label, color = "green", align = "left", width, ...props }, ref) => (
@@ -245,17 +238,7 @@ const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
       {...props}
     >
-      <span
-        className={cn(
-          "inline-flex items-center h-6 px-[var(--padding-md)] py-[var(--padding-xs)] rounded-[var(--radius-sm)]",
-          "border border-[var(--transparent-black-8)]",
-          "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
-          "text-[length:var(--size-small)] leading-[var(--line-height-small-text)] whitespace-nowrap",
-          badgeColorMap[color]
-        )}
-      >
-        {label}
-      </span>
+      <Pill label={label} color={color} size="md" />
     </div>
   )
 );

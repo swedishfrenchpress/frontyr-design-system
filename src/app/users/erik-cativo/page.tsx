@@ -1,14 +1,16 @@
 "use client";
 
+import { useState } from "react";
 import { SidebarNav, type NavItem } from "@/components/ui/sidebar-nav";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
-import { TextInput } from "@/components/ui/text-input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Pill } from "@/components/ui/pill";
+import { Switch } from "@/components/ui/switch";
 import {
   Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TableCellBadge, TableCellAction, TablePagination,
 } from "@/components/ui/table";
-import { Home, UserMultiple, Settings, OverflowMenuVertical } from "@carbon/icons-react";
+import { cn } from "@/lib/utils";
+import { Home, UserMultiple, Settings } from "@carbon/icons-react";
 import { PricingQuickProposal, Finance } from "@carbon/icons-react";
 
 const navItems: NavItem[] = [
@@ -25,7 +27,7 @@ const Logo = () => <img src="/images/acme-bank-logo.png" alt="ACME BANK" classNa
 function LabeledField({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex flex-col">
-      <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
+      <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase tracking-[0.04em] text-[color:var(--content-secondary)] mb-1">
         {label}
       </span>
       <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
@@ -35,19 +37,92 @@ function LabeledField({ label, value }: { label: string; value: string }) {
   );
 }
 
+/* Permission/method row */
+function PermRow({
+  label,
+  description,
+  checked,
+  onToggle,
+  limitValue,
+  onLimitChange,
+  isFirst,
+}: {
+  label: string;
+  description: string;
+  checked: boolean;
+  onToggle: () => void;
+  limitValue?: string;
+  onLimitChange?: (v: string) => void;
+  isFirst?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-center px-[var(--padding-2xl)] py-[var(--padding-lg)] gap-[var(--padding-xl)]",
+        "transition-colors duration-200 hover:bg-[rgba(0,0,0,0.015)]",
+        !isFirst && "border-t border-[var(--border-subtle)]"
+      )}
+    >
+      <div className="flex-1 min-w-0">
+        <div className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
+          {label}
+        </div>
+        <div className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[var(--line-height-tiny-text)] text-[color:var(--content-secondary)] mt-[1px]">
+          {description}
+        </div>
+      </div>
+      {limitValue !== undefined && (
+        <input
+          type="text"
+          value={limitValue}
+          onChange={(e) => onLimitChange?.(e.target.value)}
+          className={cn(
+            "w-[140px] text-right font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[var(--line-height-small-text)]",
+            "px-[var(--padding-lg)] py-[var(--padding-sm)] border border-[var(--border-subtle)] rounded-[var(--radius-sm)]",
+            "bg-[var(--background-primary)] text-[color:var(--content-primary)]",
+            "outline-none transition-[border-color,opacity] duration-300",
+            "focus:border-[var(--border-strong)]",
+            !checked && "opacity-25 pointer-events-none"
+          )}
+        />
+      )}
+      <Switch
+        checked={checked}
+        onChange={onToggle}
+      />
+    </div>
+  );
+}
+
 export default function UserDetailPage() {
+  const [perms, setPerms] = useState({
+    view: true,
+    open: true,
+    monitor: true,
+    staff: false,
+  });
+
+  const [methods, setMethods] = useState({
+    ach: { on: true, limit: "$50,000.00" },
+    wire: { on: true, limit: "$100,000.00" },
+    usdc: { on: true, limit: "$250,000.00" },
+  });
+
+  const togglePerm = (key: keyof typeof perms) =>
+    setPerms((p) => ({ ...p, [key]: !p[key] }));
+
+  const toggleMethod = (key: keyof typeof methods) =>
+    setMethods((m) => ({ ...m, [key]: { ...m[key], on: !m[key].on } }));
+
+  const setLimit = (key: keyof typeof methods, limit: string) =>
+    setMethods((m) => ({ ...m, [key]: { ...m[key], limit } }));
+
   return (
     <div className="flex h-screen bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6]">
       <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="shrink-0" />
 
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Content */}
-        <main className="relative flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
-          {/* Change Role button — top right, same level as breadcrumbs */}
-          <div className="absolute top-[var(--padding-3xl)] right-[var(--padding-3xl)]">
-            <Button variant="primary" size="lg">Change Role</Button>
-          </div>
-
+        <main className="flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
           {/* Breadcrumbs */}
           <Breadcrumbs items={[
             { label: "", icon: <UserMultiple size={16} /> },
@@ -55,100 +130,72 @@ export default function UserDetailPage() {
             { label: "Erik Cativo" },
           ]} className="mb-[var(--padding-2xl)]" />
 
-          {/* User info card */}
-          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-[var(--padding-xl)] mb-[var(--padding-2xl)]">
-            <div className="flex flex-col gap-3">
-              {/* Avatar + name + badge */}
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-[var(--padding-md)]">
-                  <div className="size-8 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center">
-                    <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] tracking-[var(--letter-spacing-spacious)] uppercase text-[color:var(--content-primary)]">EC</span>
-                  </div>
-                  <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] tracking-[var(--letter-spacing-spacious)] uppercase text-[color:var(--content-primary)]">Erik Cativo</span>
+          {/* Profile card */}
+          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-[var(--padding-2xl)] mb-[var(--padding-xl)]">
+            {/* Top: avatar + name + badge + change role */}
+            <div className="flex items-center justify-between mb-[var(--padding-xl)]">
+              <div className="flex items-center gap-[var(--padding-lg)]">
+                <div className="size-11 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center shrink-0">
+                  <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] text-[color:var(--content-secondary)]">EC</span>
                 </div>
-                <span className="inline-flex items-center h-4 px-[var(--padding-md)] py-[var(--padding-xs)] rounded-[var(--radius-sm)] border border-[var(--transparent-black-8)] bg-[var(--bg-badge-green)] font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-success)]">
-                  Active
-                </span>
+                <div className="flex items-center gap-[var(--padding-md)]">
+                  <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-regular)] text-[color:var(--content-primary)]">
+                    Erik Cativo
+                  </span>
+                  <Pill label="Active" color="green" size="sm" />
+                </div>
               </div>
+              <Button variant="secondary" size="lg">Change role</Button>
+            </div>
 
-              {/* Detail fields */}
-              <div className="flex items-center justify-between">
-                <LabeledField label="Role" value="Account Manager" />
-                <LabeledField label="Email" value="erik@hoseki.app" />
-                <LabeledField label="Phone" value="+15552348765" />
-                <LabeledField label="Joined Date" value="03/18/2026" />
-                <LabeledField label="Last Active" value="03/23/2026 09:30" />
-              </div>
+            {/* Meta row */}
+            <div className="border-t border-[var(--border-subtle)] pt-[var(--padding-xl)] grid grid-cols-5">
+              <LabeledField label="Role" value="Account Manager" />
+              <LabeledField label="Email" value="erik@hoseki.app" />
+              <LabeledField label="Phone" value="+15552348765" />
+              <LabeledField label="Joined date" value="03/18/2026" />
+              <LabeledField label="Last active" value="03/23/2026 09:30" />
             </div>
           </div>
 
-          {/* Access Controls + Transaction Limits */}
-          <div className="flex flex-col gap-3 mb-[var(--padding-2xl)]">
-            {/* Section headings */}
-            <div className="flex gap-6">
-              <p className="w-[417px] font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
-                Access Controls
-              </p>
-              <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
-                Transaction Limits
-              </p>
+          {/* Access controls card */}
+          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-lg)] overflow-hidden mb-[var(--padding-xl)]">
+            {/* Header */}
+            <div className="flex items-center justify-between px-[var(--padding-2xl)] py-[var(--padding-xl)] border-b border-[var(--border-subtle)]">
+              <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] text-[color:var(--content-primary)]">
+                Access controls
+              </span>
+              <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] text-[color:var(--content-secondary)]">
+                Account Manager
+              </span>
             </div>
 
-            {/* Two columns */}
-            <div className="flex gap-6">
-              {/* Left: Access Controls */}
-              <div className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-[var(--padding-xl)] shrink-0">
-                <div className="flex flex-col gap-[var(--padding-2xl)]">
-                  {/* Permissions */}
-                  <div className="flex flex-col gap-[var(--padding-md)]">
-                    <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
-                      Permissions
-                    </span>
-                    <div className="flex flex-col gap-[var(--padding-xl)]">
-                      <div className="flex gap-[var(--padding-3xl)]">
-                        <Checkbox checked label="Account Opening" className="w-[197px]" />
-                        <Checkbox checked label="View Accounts" />
-                      </div>
-                      <div className="flex gap-[var(--padding-3xl)]">
-                        <Checkbox checked label="Transaction Monitoring" />
-                        <Checkbox label="Staff Management" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Payment methods */}
-                  <div className="flex flex-col gap-[var(--padding-md)]">
-                    <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase text-[color:var(--content-secondary)]">
-                      Approved payment methods
-                    </span>
-                    <div className="flex gap-[var(--padding-3xl)]">
-                      <Checkbox checked label="ACH" />
-                      <Checkbox checked label="USDC" />
-                      <Checkbox checked label="Wire" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right: Transaction Limits */}
-              <div className="flex-1 border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-[var(--padding-xl)] flex flex-col justify-between">
-                <div className="flex gap-3">
-                  <TextInput label="ACH Limit" defaultValue="$50,000.00" size="md" />
-                  <TextInput label="Wire Limit" defaultValue="$100,000.00" size="md" />
-                  <TextInput label="USDC Limit" defaultValue="$250,000.00" size="md" />
-                </div>
-                <div className="flex items-center justify-end gap-[var(--padding-md)]">
-                  <Button variant="secondary" size="lg" disabled>Cancel</Button>
-                  <Button variant="primary" size="lg" disabled>Save Changes</Button>
-                </div>
-              </div>
+            {/* Permissions section */}
+            <div className="px-[var(--padding-2xl)] pt-[var(--padding-md)] pb-[var(--padding-xs)]">
+              <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase tracking-[0.05em] text-[color:var(--content-secondary)]">
+                Permissions
+              </span>
             </div>
+            <PermRow label="View accounts" description="Read-only access to all accounts" checked={perms.view} onToggle={() => togglePerm("view")} isFirst />
+            <PermRow label="Account opening" description="Create and onboard new accounts" checked={perms.open} onToggle={() => togglePerm("open")} />
+            <PermRow label="Transaction monitoring" description="View and flag transactions" checked={perms.monitor} onToggle={() => togglePerm("monitor")} />
+            <PermRow label="Staff management" description="Add, remove, and manage team members" checked={perms.staff} onToggle={() => togglePerm("staff")} />
+
+            {/* Payment methods section */}
+            <div className="border-t border-[var(--border-subtle)] px-[var(--padding-2xl)] pt-[var(--padding-md)] pb-[var(--padding-xs)]">
+              <span className="font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-super-tiny)] leading-[var(--line-height-small-text)] uppercase tracking-[0.05em] text-[color:var(--content-secondary)]">
+                Payment methods & limits
+              </span>
+            </div>
+            <PermRow label="ACH" description="Domestic bank transfers" checked={methods.ach.on} onToggle={() => toggleMethod("ach")} limitValue={methods.ach.limit} onLimitChange={(v) => setLimit("ach", v)} isFirst />
+            <PermRow label="Wire" description="Domestic and international wires" checked={methods.wire.on} onToggle={() => toggleMethod("wire")} limitValue={methods.wire.limit} onLimitChange={(v) => setLimit("wire", v)} />
+            <PermRow label="USDC" description="Stablecoin payments" checked={methods.usdc.on} onToggle={() => toggleMethod("usdc")} limitValue={methods.usdc.limit} onLimitChange={(v) => setLimit("usdc", v)} />
           </div>
 
           {/* Recent Activity */}
           <div className="flex flex-col gap-3">
-            <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
-              Recent Activity
+            <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
+              Recent activity
             </p>
             <Table className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
               <TableHeader>
