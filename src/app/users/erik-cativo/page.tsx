@@ -7,11 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
 import { Avatar } from "@/components/ui/avatar";
 import { Switch } from "@/components/ui/switch";
+import { Modal } from "@/components/ui/modal";
 import {
   Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TableCellBadge, TablePagination,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { Home, UserMultiple, Settings, OverflowMenuVertical } from "@carbon/icons-react";
+import { Home, UserMultiple, Settings, OverflowMenuVertical, User, WarningAlt } from "@carbon/icons-react";
 import { PricingQuickProposal, Finance } from "@carbon/icons-react";
 
 const navItems: NavItem[] = [
@@ -118,6 +119,63 @@ export default function UserDetailPage() {
   const setLimit = (key: keyof typeof methods, limit: string) =>
     setMethods((m) => ({ ...m, [key]: { ...m[key], limit } }));
 
+  // Change role modal
+  const [showModal, setShowModal] = useState(false);
+  const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const currentRole = "account_manager";
+
+  const roles = [
+    {
+      id: "admin",
+      name: "Admin",
+      desc: "Full system access with the ability to manage all users, settings, and configurations.",
+      perms: [
+        { label: "All permissions", granted: true },
+        { label: "Staff management", granted: true },
+        { label: "Settings", granted: true },
+      ],
+      warning: "Admin has full system access including the ability to delete accounts and modify security settings.",
+    },
+    {
+      id: "account_manager",
+      name: "Account Manager",
+      desc: "Manage client accounts, process transactions, and view account details.",
+      perms: [
+        { label: "View accounts", granted: true },
+        { label: "Account opening", granted: true },
+        { label: "Transactions", granted: true },
+        { label: "Staff management", granted: false },
+      ],
+      warning: null,
+    },
+    {
+      id: "operations_manager",
+      name: "Operations Manager",
+      desc: "Approve transactions and manage operational workflows. No direct account access.",
+      perms: [
+        { label: "Approvals", granted: true },
+        { label: "Transaction monitoring", granted: true },
+        { label: "View accounts", granted: false },
+        { label: "Account opening", granted: false },
+      ],
+      warning: "This will revoke account access. Erik will no longer be able to view or manage client accounts.",
+    },
+    {
+      id: "compliance_officer",
+      name: "Compliance Officer",
+      desc: "Read-only access for audit trails, compliance reports, and transaction monitoring.",
+      perms: [
+        { label: "Audit logs", granted: true },
+        { label: "Transaction monitoring", granted: true },
+        { label: "Account opening", granted: false },
+        { label: "Approvals", granted: false },
+      ],
+      warning: "This will significantly reduce access. Erik will only have read-only permissions for auditing purposes.",
+    },
+  ];
+
+  const selectedRoleData = roles.find((r) => r.id === selectedRole);
+
   return (
     <div className="flex h-screen bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6]">
       <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="shrink-0" />
@@ -144,7 +202,7 @@ export default function UserDetailPage() {
                   <Pill label="Active" color="green" size="md" />
                 </div>
               </div>
-              <Button variant="primary" size="lg">Change role</Button>
+              <Button variant="primary" size="lg" onClick={() => { setSelectedRole(null); setShowModal(true); }}>Change role</Button>
             </div>
 
             {/* Meta row */}
@@ -275,6 +333,110 @@ export default function UserDetailPage() {
             </Table>
         </main>
       </div>
+
+      {/* Change role modal */}
+      <Modal open={showModal} onClose={() => setShowModal(false)}>
+          <div>
+            {/* Header */}
+            <div className="px-[var(--padding-2xl)] pt-[var(--padding-2xl)]">
+              <h2 className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:18px] leading-[24px] text-[color:var(--content-primary)] mb-1">
+                Change role
+              </h2>
+              <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[var(--line-height-small-text)] text-[color:var(--content-secondary)]">
+                Update the role for Erik Cativo.{" "}
+                <a href="#" className="text-[color:var(--content-primary)]">
+                  Learn about roles
+                </a>
+              </p>
+            </div>
+
+            {/* Current role indicator */}
+            <div className="flex items-center gap-[var(--padding-sm)] px-[var(--padding-2xl)] mt-[var(--padding-lg)]">
+              <User size={14} className="text-[color:var(--content-secondary)] shrink-0" />
+              <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] text-[color:var(--content-secondary)]">
+                Current role: Account Manager
+              </span>
+            </div>
+
+            {/* Role list */}
+            <div className="flex flex-col gap-[var(--padding-md)] px-[var(--padding-2xl)] py-[var(--padding-xl)]">
+              {roles.map((role) => {
+                const isCurrent = role.id === currentRole;
+                const isSelected = selectedRole === role.id;
+                return (
+                  <button
+                    key={role.id}
+                    disabled={isCurrent}
+                    onClick={() => setSelectedRole(role.id)}
+                    className={cn(
+                      "text-left rounded-[var(--radius-sm)] p-[var(--padding-xl)] border transition-[border-color,background-color] duration-200",
+                      isCurrent && "opacity-45 pointer-events-none",
+                      isSelected
+                        ? "border-[var(--border-medium)]"
+                        : "border-[var(--border-subtle)] hover:border-[var(--border-medium)] hover:bg-[rgba(0,0,0,0.012)]"
+                    )}
+                  >
+                    {/* Role top: name + radio */}
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] text-[color:var(--content-primary)]">
+                        {role.name}
+                        {isCurrent && (
+                          <span className="font-[var(--weight-regular)] text-[color:var(--content-secondary)] text-[length:var(--size-button)] ml-1">
+                            (current)
+                          </span>
+                        )}
+                      </span>
+                      {/* Radio indicator */}
+                      <span className={cn(
+                        "size-[18px] rounded-full border-[1.5px] flex items-center justify-center shrink-0 transition-[border-color] duration-200",
+                        isSelected ? "border-[var(--content-primary)]" : "border-[var(--border-medium)]"
+                      )}>
+                        <span className={cn(
+                          "size-2 rounded-full bg-[var(--content-primary)] transition-transform duration-200",
+                          isSelected ? "scale-100" : "scale-0"
+                        )} />
+                      </span>
+                    </div>
+
+                    {/* Description */}
+                    <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[1.4] text-[color:var(--content-secondary)] mb-[var(--padding-md)]">
+                      {role.desc}
+                    </p>
+
+                    {/* Permission tags */}
+                    <div className="flex flex-wrap gap-[5px]">
+                      {role.perms.map((p) => (
+                        <Pill
+                          key={p.label}
+                          label={p.label}
+                          color={p.granted ? "green" : "gray"}
+                          size="sm"
+                          className={!p.granted ? "line-through decoration-[rgba(0,0,0,0.25)]" : ""}
+                        />
+                      ))}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Warning callout */}
+            {selectedRoleData?.warning && (
+              <div className="flex items-start gap-[var(--padding-md)] mx-[var(--padding-2xl)] px-[var(--padding-lg)] py-[var(--padding-md)] bg-[var(--background-warning)] border border-[rgba(138,109,0,0.2)] rounded-[var(--radius-sm)]">
+                <WarningAlt size={14} className="text-[color:var(--content-warning-text)] shrink-0 mt-[1px]" />
+                <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-button)] leading-[1.45] text-[color:var(--content-warning-text)]">
+                  {selectedRoleData.warning}
+                </span>
+              </div>
+            )}
+
+            {/* Footer */}
+            <div className="flex items-center justify-end gap-[var(--padding-md)] px-[var(--padding-2xl)] py-[var(--padding-xl)]">
+              <Button variant="secondary" size="lg" onClick={() => setShowModal(false)}>Cancel</Button>
+              <Button variant="primary" size="lg" disabled={!selectedRole}>Update role</Button>
+            </div>
+          </div>
+      </Modal>
     </div>
   );
 }
