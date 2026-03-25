@@ -107,16 +107,16 @@ export default function DashboardPage() {
       {/* Main area */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Content area */}
-        <main className="flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
-          {/* Breadcrumbs */}
-          <Breadcrumbs items={[{ label: "", icon: <UserMultiple size={16} /> }, { label: "Users" }]} className="mb-[var(--padding-2xl)]" />
-
-          {/* New User button */}
-          <div className="flex justify-end mb-[var(--padding-2xl)]">
+        <main className="relative flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
+          {/* New User button — top right, same level as breadcrumbs */}
+          <div className="absolute top-[var(--padding-3xl)] right-[var(--padding-3xl)]">
             <Button variant="primary" buttonType="text-icon" icon={<IconAdd />}>
               New User
             </Button>
           </div>
+
+          {/* Breadcrumbs */}
+          <Breadcrumbs items={[{ label: "", icon: <UserMultiple size={16} /> }, { label: "Users" }]} className="mb-[var(--padding-2xl)]" />
 
           {/* Stat cards */}
           <div className="flex gap-[var(--padding-2xl)] mb-[var(--padding-2xl)]">

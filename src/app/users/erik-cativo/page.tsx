@@ -42,18 +42,18 @@ export default function UserDetailPage() {
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Content */}
-        <main className="flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
+        <main className="relative flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
+          {/* Change Role button — top right, same level as breadcrumbs */}
+          <div className="absolute top-[var(--padding-3xl)] right-[var(--padding-3xl)]">
+            <Button variant="primary" size="lg">Change Role</Button>
+          </div>
+
           {/* Breadcrumbs */}
           <Breadcrumbs items={[
             { label: "", icon: <UserMultiple size={16} /> },
             { label: "Users", href: "/users" },
             { label: "Erik Cativo" },
           ]} className="mb-[var(--padding-2xl)]" />
-
-          {/* Change Role button */}
-          <div className="flex justify-end mb-[var(--padding-2xl)]">
-            <Button variant="primary" size="lg">Change Role</Button>
-          </div>
 
           {/* User info card */}
           <div className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-[var(--padding-xl)] mb-[var(--padding-2xl)]">
