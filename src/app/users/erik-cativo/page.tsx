@@ -131,7 +131,7 @@ export default function UserDetailPage() {
           ]} className="mb-[var(--padding-2xl)]" />
 
           {/* Profile card */}
-          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-lg)] p-[var(--padding-2xl)] mb-[var(--padding-xl)]">
+          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] p-[var(--padding-2xl)] mb-[var(--padding-xl)]">
             {/* Top: avatar + name + badge + change role */}
             <div className="flex items-center justify-between mb-[var(--padding-xl)]">
               <div className="flex items-center gap-[var(--padding-lg)]">
@@ -142,7 +142,7 @@ export default function UserDetailPage() {
                   <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-regular)] text-[color:var(--content-primary)]">
                     Erik Cativo
                   </span>
-                  <Pill label="Active" color="green" size="sm" />
+                  <Pill label="Active" color="green" size="md" />
                 </div>
               </div>
               <Button variant="secondary" size="lg">Change role</Button>
@@ -159,7 +159,7 @@ export default function UserDetailPage() {
           </div>
 
           {/* Access controls card */}
-          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-lg)] overflow-hidden mb-[var(--padding-xl)]">
+          <div className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-hidden mb-[var(--padding-xl)]">
             {/* Header */}
             <div className="flex items-center justify-between px-[var(--padding-2xl)] py-[var(--padding-xl)] border-b border-[var(--border-subtle)]">
               <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] text-[color:var(--content-primary)]">
@@ -193,11 +193,7 @@ export default function UserDetailPage() {
           </div>
 
           {/* Recent Activity */}
-          <div className="flex flex-col gap-3">
-            <p className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
-              Recent activity
-            </p>
-            <Table className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
+            <Table title="Recent activity" className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
               <TableHeader>
                 <TableHead width="16.67%">Name</TableHead>
                 <TableHead width="16.67%">Email</TableHead>
@@ -226,7 +222,6 @@ export default function UserDetailPage() {
               </TableBody>
               <TablePagination total={2} page={1} pageSize={10} />
             </Table>
-          </div>
         </main>
       </div>
     </div>

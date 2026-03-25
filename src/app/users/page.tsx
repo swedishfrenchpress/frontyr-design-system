@@ -150,13 +150,8 @@ export default function DashboardPage() {
             </div>
           </div>
 
-          {/* Active Users section */}
-          <h2 className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-medium)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)] mb-[var(--padding-lg)]">
-            Active Users
-          </h2>
-
           {/* Users table */}
-          <Table className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
+          <Table title="Active Users" className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
             <TableHeader>
               <TableHead width="16.67%">Name</TableHead>
               <TableHead width="16.67%">Email</TableHead>

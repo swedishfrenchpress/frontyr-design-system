@@ -11,9 +11,21 @@ import { ArrowsVertical, Checkmark, ChevronLeft, ChevronRight } from "@carbon/ic
 
 /* ---- Table root ---- */
 
-const Table = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
-  ({ className, children, ...props }, ref) => (
+interface TableProps extends React.ComponentProps<"div"> {
+  /** Optional title rendered inside the container with a bottom border */
+  title?: string;
+}
+
+const Table = React.forwardRef<HTMLDivElement, TableProps>(
+  ({ className, title, children, ...props }, ref) => (
     <div ref={ref} className={cn("w-full", className)} {...props}>
+      {title && (
+        <div className="flex items-center px-[var(--padding-xl)] py-[var(--padding-xl)] border-b border-[var(--border-subtle)]">
+          <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
+            {title}
+          </span>
+        </div>
+      )}
       {children}
     </div>
   )
