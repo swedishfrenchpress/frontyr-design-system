@@ -17,7 +17,7 @@ const Logo = () => <img src="/images/acme-bank-logo.png" alt="ACME BANK" classNa
 
 export default function DashboardPage() {
   return (
-    <div className="flex h-screen bg-[var(--background-secondary)]">
+    <div className="flex h-screen bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6]">
       {/* Sidebar */}
       <SidebarNav
         variant="classic"
@@ -25,7 +25,7 @@ export default function DashboardPage() {
         logo={<Logo />}
         showFooter={false}
         onToggle={() => {}}
-        className="bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6] border-r border-[var(--border-subtle)] shrink-0"
+        className="shrink-0"
       />
 
       {/* Main area */}

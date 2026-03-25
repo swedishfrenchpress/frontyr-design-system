@@ -141,7 +141,7 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarNavProps>(
         )}
       >
         {/* Logo + toggle */}
-        <div className="flex items-center gap-[var(--padding-xl)] px-[var(--padding-2xl)] pt-[48px] pb-[var(--padding-xl)]">
+        <div className="flex items-center justify-between pl-[var(--padding-2xl)] pr-[var(--padding-3xl)] pt-[48px] pb-[var(--padding-xl)]">
           {logo && <div className="shrink-0 h-6 flex items-center">{logo}</div>}
           {onToggle && (
             <button

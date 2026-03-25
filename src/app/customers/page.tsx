@@ -17,8 +17,8 @@ const Logo = () => <img src="/images/acme-bank-logo.png" alt="ACME BANK" classNa
 
 export default function CustomersPage() {
   return (
-    <div className="flex h-screen bg-[var(--background-secondary)]">
-      <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6] border-r border-[var(--border-subtle)] shrink-0" />
+    <div className="flex h-screen bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6]">
+      <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="shrink-0" />
       <div className="flex-1 flex flex-col min-w-0">
         <main className="flex-1 flex flex-col overflow-auto p-[var(--padding-3xl)] bg-[var(--background-primary)] m-[var(--padding-xl)] rounded-[var(--radius-lg)]">
           <Breadcrumbs items={[{ label: "", icon: <Finance size={16} /> }, { label: "Customers" }]} className="mb-[var(--padding-2xl)]" />

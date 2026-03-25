@@ -37,8 +37,8 @@ function LabeledField({ label, value }: { label: string; value: string }) {
 
 export default function UserDetailPage() {
   return (
-    <div className="flex h-screen bg-[var(--background-secondary)]">
-      <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6] border-r border-[var(--border-subtle)] shrink-0" />
+    <div className="flex h-screen bg-gradient-to-r from-[#f2f2f4] to-[#f9f8f6]">
+      <SidebarNav variant="classic" items={navItems} logo={<Logo />} showFooter={false} onToggle={() => {}} className="shrink-0" />
 
       <div className="flex-1 flex flex-col min-w-0">
         {/* Content */}
