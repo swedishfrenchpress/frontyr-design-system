@@ -61,7 +61,7 @@ const buttonVariants = cva(
           "gap-[var(--padding-sm)]",
           "text-[length:var(--size-super-tiny)]",
           "tracking-[var(--letter-spacing-normal)]",
-          "font-[var(--weight-semibold)]",
+          "font-[var(--weight-regular)]",
         ],
       },
       buttonType: {

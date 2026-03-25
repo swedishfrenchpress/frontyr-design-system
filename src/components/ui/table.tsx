@@ -101,7 +101,7 @@ const TableRow = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
     <div
       ref={ref}
       role="row"
-      className={cn("flex w-full relative divider-gradient hover:bg-[var(--input-hover-dark)] transition-[background-color] duration-300", className)}
+      className={cn("flex w-full relative divider-gradient hover:bg-[rgba(0,0,0,0.015)] transition-[background-color] duration-200", className)}
       {...props}
     >
       {children}
@@ -126,7 +126,6 @@ const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>(
       role="cell"
       className={cn(
         "flex items-center gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)]",
         "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
         "text-[length:var(--size-small)] leading-[var(--line-height-small-text)]",
         "text-[color:var(--content-primary)]",
@@ -169,7 +168,6 @@ const TableCellAction = React.forwardRef<HTMLDivElement, TableCellActionProps>(
       role="cell"
       className={cn(
         "flex items-center justify-end gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)]",
         className
       )}
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
@@ -212,7 +210,6 @@ const TableCellIcon = React.forwardRef<HTMLDivElement, TableCellIconProps>(
       role="cell"
       className={cn(
         "flex items-center justify-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)]",
         "text-[color:var(--content-primary)]",
         className
       )}
@@ -242,7 +239,6 @@ const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
       role="cell"
       className={cn(
         "flex items-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)]",
         align === "center" && "justify-center",
         align === "right" && "justify-end",
         className

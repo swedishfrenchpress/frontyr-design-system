@@ -7,10 +7,10 @@ import { Button } from "@/components/ui/button";
 import { Pill } from "@/components/ui/pill";
 import { Switch } from "@/components/ui/switch";
 import {
-  Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TableCellBadge, TableCellAction, TablePagination,
+  Table, TableHeader, TableHead, TableBody, TableRow, TableCell, TableCellBadge, TablePagination,
 } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { Home, UserMultiple, Settings } from "@carbon/icons-react";
+import { Home, UserMultiple, Settings, OverflowMenuVertical } from "@carbon/icons-react";
 import { PricingQuickProposal, Finance } from "@carbon/icons-react";
 
 const navItems: NavItem[] = [
@@ -145,7 +145,7 @@ export default function UserDetailPage() {
                   <Pill label="Active" color="green" size="md" />
                 </div>
               </div>
-              <Button variant="secondary" size="lg">Change role</Button>
+              <Button variant="primary" size="lg">Change role</Button>
             </div>
 
             {/* Meta row */}
@@ -195,32 +195,84 @@ export default function UserDetailPage() {
           {/* Recent Activity */}
             <Table title="Recent activity" className="border border-[var(--border-subtle)] rounded-[var(--radius-sm)] overflow-clip">
               <TableHeader>
-                <TableHead width="16.67%">Name</TableHead>
-                <TableHead width="16.67%">Email</TableHead>
-                <TableHead width="16.67%">Phone</TableHead>
-                <TableHead width="16.67%">Status</TableHead>
-                <TableHead width="16.67%">Joined Date</TableHead>
-                <TableHead width="16.67%" align="right">Actions</TableHead>
+                <TableHead width="20%">Date</TableHead>
+                <TableHead width="15%">Status</TableHead>
+                <TableHead width="25%">Customer</TableHead>
+                <TableHead width="20%">Reference</TableHead>
+                <TableHead width="10%">Amount</TableHead>
+                <TableHead width="10%" align="right">Actions</TableHead>
               </TableHeader>
               <TableBody>
                 <TableRow>
-                  <TableCell width="16.67%">Erik Cativo</TableCell>
-                  <TableCell width="16.67%">erik@hoseki.app</TableCell>
-                  <TableCell width="16.67%">+15552348765</TableCell>
-                  <TableCellBadge width="16.67%" label="Verified" color="green" />
-                  <TableCell width="16.67%">03/18/2026</TableCell>
-                  <TableCellAction width="16.67%" actions={[{ label: "View" }]} />
+                  <TableCell width="20%" description="01:04 PM">03/19/2026</TableCell>
+                  <TableCellBadge width="15%" label="Completed" color="green" />
+                  <TableCell width="25%" description="sarah@grazianos.com">Sarah Mitchell</TableCell>
+                  <TableCell width="20%">TXN-20260319-001</TableCell>
+                  <TableCell width="10%">$12,500.00</TableCell>
+                  <TableCell width="10%" align="right">
+                    <div className="flex items-center justify-end gap-[var(--padding-md)] w-full">
+                      <button className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] cursor-pointer hover:text-[color:var(--content-secondary)] transition-[color] duration-300">
+                        View
+                      </button>
+                      <button className="text-[color:var(--content-primary)] cursor-pointer">
+                        <OverflowMenuVertical size={16} />
+                      </button>
+                    </div>
+                  </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell width="16.67%">Erik Cativo</TableCell>
-                  <TableCell width="16.67%">erik@hoseki.app</TableCell>
-                  <TableCell width="16.67%">+15552348765</TableCell>
-                  <TableCellBadge width="16.67%" label="Unverified" color="yellow" />
-                  <TableCell width="16.67%">03/18/2026</TableCell>
-                  <TableCellAction width="16.67%" actions={[{ label: "View" }]} />
+                  <TableCell width="20%" description="09:32 AM">03/19/2026</TableCell>
+                  <TableCellBadge width="15%" label="Completed" color="green" />
+                  <TableCell width="25%" description="jason@grazianos.com">Jason Williams</TableCell>
+                  <TableCell width="20%">TXN-20260319-002</TableCell>
+                  <TableCell width="10%">$8,200.00</TableCell>
+                  <TableCell width="10%" align="right">
+                    <div className="flex items-center justify-end gap-[var(--padding-md)] w-full">
+                      <button className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] cursor-pointer hover:text-[color:var(--content-secondary)] transition-[color] duration-300">
+                        View
+                      </button>
+                      <button className="text-[color:var(--content-primary)] cursor-pointer">
+                        <OverflowMenuVertical size={16} />
+                      </button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell width="20%" description="04:15 PM">03/18/2026</TableCell>
+                  <TableCellBadge width="15%" label="Pending" color="yellow" />
+                  <TableCell width="25%" description="marco@acmebank.com">Marco Rivera</TableCell>
+                  <TableCell width="20%">TXN-20260318-007</TableCell>
+                  <TableCell width="10%">$45,000.00</TableCell>
+                  <TableCell width="10%" align="right">
+                    <div className="flex items-center justify-end gap-[var(--padding-md)] w-full">
+                      <button className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] cursor-pointer hover:text-[color:var(--content-secondary)] transition-[color] duration-300">
+                        View
+                      </button>
+                      <button className="text-[color:var(--content-primary)] cursor-pointer">
+                        <OverflowMenuVertical size={16} />
+                      </button>
+                    </div>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell width="20%" description="11:48 AM">03/18/2026</TableCell>
+                  <TableCellBadge width="15%" label="Completed" color="green" />
+                  <TableCell width="25%" description="sarah@grazianos.com">Sarah Mitchell</TableCell>
+                  <TableCell width="20%">TXN-20260318-003</TableCell>
+                  <TableCell width="10%">$3,750.00</TableCell>
+                  <TableCell width="10%" align="right">
+                    <div className="flex items-center justify-end gap-[var(--padding-md)] w-full">
+                      <button className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)] text-[length:var(--size-small)] text-[color:var(--content-primary)] cursor-pointer hover:text-[color:var(--content-secondary)] transition-[color] duration-300">
+                        View
+                      </button>
+                      <button className="text-[color:var(--content-primary)] cursor-pointer">
+                        <OverflowMenuVertical size={16} />
+                      </button>
+                    </div>
+                  </TableCell>
                 </TableRow>
               </TableBody>
-              <TablePagination total={2} page={1} pageSize={10} />
+              <TablePagination total={12} page={1} pageSize={4} />
             </Table>
         </main>
       </div>
