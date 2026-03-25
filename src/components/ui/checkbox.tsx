@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Checkmark, Subtract } from "@carbon/icons-react";
+import { Checkbox as CheckboxIcon, CheckboxCheckedFilled, CheckboxIndeterminateFilled } from "@carbon/icons-react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -51,7 +51,7 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const isFilled = indeterminate || isChecked;
 
     const box = (
-      <span className="relative flex items-start p-[2px]">
+      <span className="relative inline-flex items-start p-[2px]">
         <input
           ref={innerRef}
           type="checkbox"
@@ -62,35 +62,27 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           className="peer sr-only"
           {...props}
         />
-        {/* Visual box */}
+        {/* Visual checkbox icon */}
         <span
           className={cn(
-            "inline-flex items-center justify-center size-5 rounded-[var(--radius-sm)] transition-colors",
-            "border",
-            isFilled
-              ? [
-                  "bg-[var(--content-primary)] border-[var(--content-primary)] text-[color:var(--content-on-primary)]",
-                  "peer-disabled:bg-[var(--content-disabled)] peer-disabled:border-[var(--content-disabled)]",
-                ]
-              : [
-                  "bg-transparent border-[var(--content-primary)]",
-                  "peer-disabled:border-[var(--content-disabled)]",
-                ],
+            "inline-flex transition-[color,box-shadow] duration-300 rounded-[var(--radius-sm)]",
+            "text-[color:var(--content-primary)]",
+            "peer-disabled:text-[color:var(--content-disabled)]",
             "peer-focus-visible:shadow-[var(--components-focus)]"
           )}
         >
           {indeterminate ? (
-            <Subtract size={12} />
+            <CheckboxIndeterminateFilled size={20} />
+          ) : isControlled ? (
+            isChecked ? <CheckboxCheckedFilled size={20} /> : <CheckboxIcon size={20} />
           ) : (
-            /* Show check when controlled=checked OR uncontrolled via CSS */
             <>
-              {isControlled ? (
-                isChecked && <Checkmark size={12} />
-              ) : (
-                <span className="hidden peer-checked:group-[]:inline-flex">
-                  <Checkmark size={12} />
-                </span>
-              )}
+              <span className="peer-checked:group-[]:hidden">
+                <CheckboxIcon size={20} />
+              </span>
+              <span className="hidden peer-checked:group-[]:inline-flex">
+                <CheckboxCheckedFilled size={20} />
+              </span>
             </>
           )}
         </span>

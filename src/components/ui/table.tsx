@@ -1,5 +1,6 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import { Pill } from "@/components/ui/pill";
 import { ArrowsVertical, Checkmark, ChevronLeft, ChevronRight } from "@carbon/icons-react";
 
 /**
@@ -10,9 +11,21 @@ import { ArrowsVertical, Checkmark, ChevronLeft, ChevronRight } from "@carbon/ic
 
 /* ---- Table root ---- */
 
-const Table = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
-  ({ className, children, ...props }, ref) => (
+interface TableProps extends React.ComponentProps<"div"> {
+  /** Optional title rendered inside the container with a bottom border */
+  title?: string;
+}
+
+const Table = React.forwardRef<HTMLDivElement, TableProps>(
+  ({ className, title, children, ...props }, ref) => (
     <div ref={ref} className={cn("w-full", className)} {...props}>
+      {title && (
+        <div className="flex items-center px-[var(--padding-xl)] py-[var(--padding-xl)] border-b border-[var(--border-subtle)]">
+          <span className="font-[family-name:var(--family-body),sans-serif] font-[var(--weight-semibold)] text-[length:var(--size-small)] leading-[var(--line-height-small-text)] text-[color:var(--content-primary)]">
+            {title}
+          </span>
+        </div>
+      )}
       {children}
     </div>
   )
@@ -88,7 +101,7 @@ const TableRow = React.forwardRef<HTMLDivElement, React.ComponentProps<"div">>(
     <div
       ref={ref}
       role="row"
-      className={cn("flex w-full hover:bg-[var(--input-hover-dark)] transition-colors", className)}
+      className={cn("flex w-full relative divider-gradient hover:bg-[rgba(0,0,0,0.015)] transition-[background-color] duration-200", className)}
       {...props}
     >
       {children}
@@ -113,7 +126,6 @@ const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>(
       role="cell"
       className={cn(
         "flex items-center gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
         "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
         "text-[length:var(--size-small)] leading-[var(--line-height-small-text)]",
         "text-[color:var(--content-primary)]",
@@ -156,7 +168,6 @@ const TableCellAction = React.forwardRef<HTMLDivElement, TableCellActionProps>(
       role="cell"
       className={cn(
         "flex items-center justify-end gap-[var(--padding-xl)] h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
         className
       )}
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
@@ -173,7 +184,7 @@ const TableCellAction = React.forwardRef<HTMLDivElement, TableCellActionProps>(
               "font-[family-name:var(--family-labels-links),sans-serif] font-[var(--weight-regular)]",
               "text-[length:var(--size-button)] leading-[var(--line-height-buttons)] tracking-[var(--letter-spacing-spacious)]",
               "uppercase text-[color:var(--content-primary)]",
-              "cursor-pointer hover:bg-[var(--input-hover-dark)] transition-colors"
+              "cursor-pointer hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             )}
           >
             {action.label}
@@ -199,7 +210,6 @@ const TableCellIcon = React.forwardRef<HTMLDivElement, TableCellIconProps>(
       role="cell"
       className={cn(
         "flex items-center justify-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
         "text-[color:var(--content-primary)]",
         className
       )}
@@ -221,14 +231,6 @@ interface TableCellBadgeProps extends React.ComponentProps<"div"> {
   width?: string | number;
 }
 
-const badgeColorMap = {
-  green: "bg-[var(--bg-badge-green)] text-[color:var(--content-success)]",
-  red: "bg-[var(--bg-badge-red)] text-[color:var(--content-attention)]",
-  yellow: "bg-[var(--bg-badge-yellow)] text-[color:var(--content-warning-text)]",
-  blue: "bg-[var(--bg-badge-blue)] text-[color:var(--content-accent)]",
-  gray: "bg-[var(--bg-badge-gray)] text-[color:var(--content-secondary)]",
-  default: "bg-[var(--bg-badge-default)] text-[color:var(--content-primary)]",
-};
 
 const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
   ({ className, label, color = "green", align = "left", width, ...props }, ref) => (
@@ -237,7 +239,6 @@ const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
       role="cell"
       className={cn(
         "flex items-center h-[var(--icons-4xl)] min-w-[124px] px-[var(--padding-xl)] py-[var(--padding-lg)]",
-        "bg-[var(--background-primary)] border-b border-[var(--border-subtle)]",
         align === "center" && "justify-center",
         align === "right" && "justify-end",
         className
@@ -245,17 +246,7 @@ const TableCellBadge = React.forwardRef<HTMLDivElement, TableCellBadgeProps>(
       style={width ? { width: typeof width === "number" ? `${width}px` : width } : undefined}
       {...props}
     >
-      <span
-        className={cn(
-          "inline-flex items-center h-6 px-[var(--padding-md)] py-[var(--padding-xs)] rounded-[var(--radius-sm)]",
-          "border border-[var(--transparent-black-8)]",
-          "font-[family-name:var(--family-body),sans-serif] font-[var(--weight-regular)]",
-          "text-[length:var(--size-small)] leading-[var(--line-height-small-text)] whitespace-nowrap",
-          badgeColorMap[color]
-        )}
-      >
-        {label}
-      </span>
+      <Pill label={label} color={color} size="md" />
     </div>
   )
 );
@@ -298,7 +289,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
           <button
             onClick={() => onPageChange?.(page - 1)}
             disabled={page <= 1}
-            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
+            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             aria-label="Previous page"
           >
             <ChevronLeft size={16} />
@@ -306,7 +297,7 @@ const TablePagination = React.forwardRef<HTMLDivElement, TablePaginationProps>(
           <button
             onClick={() => onPageChange?.(page + 1)}
             disabled={page >= totalPages}
-            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-colors"
+            className="size-8 inline-flex items-center justify-center rounded-[var(--radius-sm)] text-[color:var(--content-primary)] disabled:text-[color:var(--content-disabled)] cursor-pointer disabled:cursor-not-allowed hover:bg-[var(--input-hover-dark)] transition-[color,background-color] duration-300"
             aria-label="Next page"
           >
             <ChevronRight size={16} />

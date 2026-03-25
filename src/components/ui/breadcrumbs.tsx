@@ -47,7 +47,7 @@ const BreadcrumbLink = ({
     "text-[length:var(--size-button)] leading-[var(--line-height-small-text)] uppercase whitespace-nowrap",
     isCurrent
       ? "font-[var(--weight-medium)] text-[color:var(--content-primary)]"
-      : "font-[var(--weight-medium)] text-[color:var(--content-secondary)] hover:underline hover:font-[var(--weight-regular)] hover:tracking-[var(--letter-spacing-spacious)]"
+      : "font-[var(--weight-medium)] text-[color:var(--content-secondary)] hover:text-[color:var(--content-primary)] transition-[color,opacity] duration-200"
   );
 
   const content = (
@@ -61,7 +61,7 @@ const BreadcrumbLink = ({
 
   if (isCurrent) {
     return (
-      <li aria-current="page">
+      <li aria-current="page" className="flex items-center">
         <span className={cn("inline-flex items-center gap-[var(--padding-md)]", textClasses)}>
           {content}
         </span>
@@ -70,7 +70,7 @@ const BreadcrumbLink = ({
   }
 
   return (
-    <li>
+    <li className="flex items-center">
       <a
         href={item.href ?? "#"}
         className={cn("inline-flex items-center gap-[var(--padding-md)]", textClasses)}
